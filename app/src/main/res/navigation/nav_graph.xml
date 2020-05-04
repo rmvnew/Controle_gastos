@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.controle.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/actionMainToList"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/actionMainToAdd"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/actionHomeToAgua"
+            app:destination="@id/controleAguaFragment" />
+        <action
+            android:id="@+id/actionMainToAddPerson"
+            app:destination="@id/addPersonFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.controle.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/actionAddProduct"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/listaToMain"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.controle.ui.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/actionSaveProduct"
+            app:destination="@id/homeFragment" />
+        <argument
+            app:argType="com.example.controle.model.Product"
+            android:name="Product"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/addToMain"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/controleAguaFragment"
+        android:name="com.example.controle.ui.ControleAguaFragment"
+        android:label="fragment_controle_agua"
+        tools:layout="@layout/fragment_controle_agua" >
+        <action
+            android:id="@+id/actionAguaToHome"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPersonFragment"
+        android:name="com.example.controle.ui.AddPersonFragment"
+        android:label="fragment_add_person"
+        tools:layout="@layout/fragment_add_person" >
+        <action
+            android:id="@+id/actionAddPersonToMain"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="Person"
+            android:defaultValue="@null"
+            app:argType="com.example.controle.model.Person"
+            app:nullable="true" />
+        <action
+            android:id="@+id/actionAddPersonToLista"
+            app:destination="@id/listaUsuarioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaUsuarioFragment"
+        android:name="com.example.controle.ui.ListaUsuarioFragment"
+        android:label="fragment_lista_usuario"
+        tools:layout="@layout/fragment_lista_usuario" >
+        <action
+            android:id="@+id/actionListaPersonToAddPerson"
+            app:destination="@id/addPersonFragment" />
+        <action
+            android:id="@+id/actionListaUsuariosToMain"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/actionListaUsuariosToDadosUsuarios"
+            app:destination="@id/dadosUsuarioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dadosUsuarioFragment"
+        android:name="com.example.controle.ui.DadosUsuarioFragment"
+        android:label="fragment_dados_usuario"
+        tools:layout="@layout/fragment_dados_usuario" >
+        <action
+            android:id="@+id/actionDadosUsuariosToListaUsuarios"
+            app:destination="@id/listaUsuarioFragment" />
+        <action
+            android:id="@+id/actionsDadosUsuariosToMain"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="Person"
+            app:argType="com.example.controle.model.Person"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
+</navigation>

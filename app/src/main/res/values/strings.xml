@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Controle</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_fragment">Cadastrar</string>
+    <string name="MainFragment" />
+    <string name="despesa">Despesa</string>
+
+</resources>

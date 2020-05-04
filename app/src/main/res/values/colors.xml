@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#000000</color>
+    <color name="button_red">#CC2222</color>
+    <color name="Azul_escuro">#191970</color>
+    <color name="Orange">#FFA500</color>
+    <color name="royalBlue">#4169E1</color>
+    <color name="BRANCO">#FFFFFF</color>
+    <color name="PRETO">#000000</color>
+    <color name="VERDE_FORTE">#008000</color>
+    <color name="VERDE_CLARO_LIMAO">#7CFC00</color>
+    <color name="VERDE_CLARO">#32CD32</color>
+    <color name="VERDE_ESCURO">#006400</color>
+    <color name="VERDE_ESCURO_DARK">#2F4F4F</color>
+    <color name="AZUL_DEEP_SKYE">#00BFFF</color>
+    <color name="AZUL_STEEL_BLUE">#4682B4</color>
+    <color name="AZUL_STEEL_BLUE2">#2C506E</color>
+    <color name="CINZA_CLARO">#C0C0C0</color>
+    <color name="CINZA_FORTE">#808080</color>
+    <color name="CINZA_FORTE_DARK">#4F4F4F</color>
+    <color name="AMARELO">#ffff00</color>
+    <color name="AMARELO_OURO">#ffD700</color>
+</resources>

@@ -1,0 +1,74 @@
+package com.example.controle.adapter
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
+import com.example.controle.R
+import com.example.controle.model.Person
+import com.example.controle.ui.DadosUsuarioFragmentDirections
+import com.example.controle.ui.HomeFragmentDirections
+import com.example.controle.ui.ListaUsuarioFragment
+import com.example.controle.ui.ListaUsuarioFragmentDirections
+import kotlinx.android.synthetic.main.person_layout.view.*
+
+class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
+
+
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
+
+        return PersonViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.person_layout,parent,false)
+        )
+
+    }
+
+    override fun getItemCount() = pers.size
+
+    override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
+
+        holder.view.txtViewNome.text = pers[position].nome
+        holder.view.txtViewCpf.text = pers[position].cpf
+        holder.view.txtViewData.text = pers[position].dataNascimento
+        holder.view.txtViewTelefone.text = pers[position].telefone
+        holder.view.txtViewEmail.text = pers[position].email
+        holder.view.txtViewAgua.text = pers[position].agua
+        holder.view.txtViewEnergia.text = pers[position].energia
+        holder.view.txtViewApartamento.text = pers[position].apartamento
+
+
+
+        holder.view.setOnClickListener {view ->
+
+            AlertDialog.Builder(view.context).apply {
+                setTitle(pers[position].nome+" Selecionado!!")
+                setMessage("Usar esse produto ou editar?")
+                setPositiveButton("Usar"){_,_ ->
+
+                    val action = ListaUsuarioFragmentDirections.actionListaUsuariosToDadosUsuarios()
+                    action.person = pers[position]
+                    Navigation.findNavController(view).navigate(action)
+
+                }
+
+                setNegativeButton("Editar"){_,_ ->
+
+
+                   val action = ListaUsuarioFragmentDirections.actionListaPersonToAddPerson()
+                   action.person = pers[position]
+                   Navigation.findNavController(view).navigate(action)
+
+                }
+            }.create().show()
+
+        }
+    }
+
+    class  PersonViewHolder(val view: View):RecyclerView.ViewHolder(view)
+
+}
