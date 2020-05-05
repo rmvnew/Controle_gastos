@@ -98,7 +98,7 @@ class AddProductFragment : BaseFragment() {
             pick(activity!!)
         }
 
-        
+        1
 
 
         arguments?.let {
