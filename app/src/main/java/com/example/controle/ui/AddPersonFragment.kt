@@ -74,6 +74,10 @@ class AddPersonFragment : BaseFragment() {
             }
         }
 
+        txtNascimento.setOnClickListener {
+            pick(activity!!)
+        }
+
 
         btn_home_usuario.setOnClickListener {
             val action = AddPersonFragmentDirections.actionAddPersonToMain()
@@ -86,7 +90,7 @@ class AddPersonFragment : BaseFragment() {
         }
 
         setMask(txtCpf,"cpf")
-        setMask(txtNascimento,"data")
+       // setMask(txtNascimento,"data")
         setMask(txtTelefone,"telefone")
 
 

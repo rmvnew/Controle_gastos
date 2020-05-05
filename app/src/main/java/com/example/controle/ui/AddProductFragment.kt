@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.controle.R
@@ -93,7 +94,11 @@ class AddProductFragment : BaseFragment() {
             }
         }
 
+        edit_text_data.setOnClickListener {
+            pick(activity!!)
+        }
 
+        
 
 
         arguments?.let {
@@ -264,3 +269,4 @@ class AddProductFragment : BaseFragment() {
     }
 
 }
+
