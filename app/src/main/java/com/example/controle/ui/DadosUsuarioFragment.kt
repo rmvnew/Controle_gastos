@@ -72,7 +72,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_nome.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_nome.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_nome.text,Toast.LENGTH_SHORT).show()
 
 
                 Effects.clickEffect(btn_copy_dados_nome,activity!!)
@@ -86,7 +86,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_cpf.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_cpf.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_cpf.text,Toast.LENGTH_SHORT).show()
 
                 Effects.clickEffect(btn_copy_dados_cpf,activity!!)
 
@@ -99,7 +99,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_data.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_data.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_data.text,Toast.LENGTH_SHORT).show()
 
                 Effects.clickEffect(btn_copy_dados_data,activity!!)
 
@@ -112,7 +112,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_telefone.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_telefone.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_telefone.text,Toast.LENGTH_SHORT).show()
 
                 Effects.clickEffect(btn_copy_dados_telefone,activity!!)
 
@@ -125,7 +125,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_email.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_email.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_email.text,Toast.LENGTH_SHORT).show()
 
                 Effects.clickEffect(btn_copy_dados_email,activity!!)
 
@@ -138,7 +138,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_agua.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_agua.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_agua.text,Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.aguasdemanaus.com.br/"))
                 startActivity(intent)
@@ -154,7 +154,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_energia.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_energia.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_energia.text,Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eletrobrasamazonas.com/agenciavirtual/login"))
                 startActivity(intent)
@@ -170,7 +170,7 @@ class DadosUsuarioFragment : BaseFragment() {
                 val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                 val clipData = ClipData.newPlainText("text", txt_dados_apartamento.text.toString().trim())
                 clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,txt_dados_apartamento.text,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Copiado:\n"+txt_dados_apartamento.text,Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www1.caixa.gov.br/servico/habitacao/"))
                 startActivity(intent)

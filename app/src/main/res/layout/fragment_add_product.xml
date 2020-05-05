@@ -35,7 +35,7 @@
                     android:id="@+id/edit_text_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:imeOptions="actionNext"
+                    android:imeOptions=""
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -92,9 +92,10 @@ class ControleAguaFragment : BaseFragment() {
             ) {
 
 
-                val valor =  spinner.selectedItem.toString()
+                val valor =  spinnerWhater.selectedItem.toString()
+                val type = spinnerType.selectedItem.toString()
 
-                setupPieChart(valor)
+                setupPieChart(valor,type)
 
 
             }
@@ -104,7 +105,7 @@ class ControleAguaFragment : BaseFragment() {
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun setupPieChart(ano: String){
+    fun setupPieChart(ano: String,type:String){
 
 
 
@@ -113,7 +114,7 @@ class ControleAguaFragment : BaseFragment() {
 
                 var lineEntries = ArrayList<Entry>()
                 val valor = ProductDatabase(it!!).getProductDao().getAllProducts()
-                val listaMeses = DateUtils.getConsumer(valor,"Agua",ano)
+                val listaMeses = DateUtils.getConsumer(valor,type,ano)
 
                 for ((index,value) in listaMeses.withIndex()){
 

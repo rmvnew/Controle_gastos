@@ -2,14 +2,18 @@ package com.example.controle.ui
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
@@ -27,9 +31,13 @@ class AddProductFragment : BaseFragment() {
 
 
     private var product:Product? = null
+    val cal = Calendar.getInstance()
+    val ano = cal.get(Calendar.YEAR)
+    val mes = cal.get(Calendar.MONTH)
+    val dia = cal.get(Calendar.DAY_OF_MONTH)
 
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,20 +50,15 @@ class AddProductFragment : BaseFragment() {
         (activity as MainActivity).supportActionBar?.setTitle("Cadastro de despesas")
 
 
+
         val dataLayout = currentContext.findViewById<EditText>(R.id.edit_text_data)
-        val cal = Calendar.getInstance()
-        val ano = cal.get(Calendar.YEAR)
-        val mes = cal.get(Calendar.MONTH)
-        val dia = cal.get(Calendar.DAY_OF_MONTH)
 
-        dataLayout.setOnClickListener {
 
-            val datePickerDialog = DatePickerDialog(currentContext.context,R.style.DialogTheme,DatePickerDialog.OnDateSetListener { it, ano, mes, dia ->
-                edit_text_data.setText("$dia/${mes.toInt()+1}/$ano")
-            },ano,mes,dia)
-            datePickerDialog.show()
-
-        }
+//        dataLayout.setOnClickListener {
+//
+//            pick(currentContext.context)
+//
+//        }
 
 
         setHasOptionsMenu(true)
@@ -65,7 +68,13 @@ class AddProductFragment : BaseFragment() {
         return currentContext
     }
 
+    fun pick(context: Context){
+        val datePickerDialog = DatePickerDialog(context,R.style.DialogTheme,DatePickerDialog.OnDateSetListener { it, ano, mes, dia ->
+            edit_text_data.setText("$dia/${mes.toInt()+1}/$ano")
+        },ano,mes,dia)
+        datePickerDialog.show()
 
+    }
 
 
 
@@ -73,8 +82,18 @@ class AddProductFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
+
         edit_text_consumo.isEnabled = false
-        setMask(edit_text_data,"data")
+       // setMask(edit_text_data,"data")
+
+        edit_text_data.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus) {
+                pick(activity!!)
+            }
+        }
+
+
 
 
         arguments?.let {

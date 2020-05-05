@@ -1,5 +1,7 @@
 package com.example.controle.ui
 
+import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_person.*
 import kotlinx.coroutines.launch
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -23,6 +26,10 @@ import kotlinx.coroutines.launch
 class AddPersonFragment : BaseFragment() {
 
     private var person:Person? = null
+    val cal = Calendar.getInstance()
+    val ano = cal.get(Calendar.YEAR)
+    val mes = cal.get(Calendar.MONTH)
+    val dia = cal.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +40,15 @@ class AddPersonFragment : BaseFragment() {
         (activity as MainActivity).supportActionBar?.setTitle("Cadastro de usuário")
         return inflater.inflate(R.layout.fragment_add_person, container, false)
     }
+
+    fun pick(context: Context){
+        val datePickerDialog = DatePickerDialog(context,R.style.DialogTheme,DatePickerDialog.OnDateSetListener { it, ano, mes, dia ->
+            txtNascimento.setText("$dia/${mes.toInt()+1}/$ano")
+        },ano,mes,dia)
+        datePickerDialog.show()
+
+    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -51,6 +67,12 @@ class AddPersonFragment : BaseFragment() {
 
         }
 
+
+        txtNascimento.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus) {
+                pick(activity!!)
+            }
+        }
 
 
         btn_home_usuario.setOnClickListener {
