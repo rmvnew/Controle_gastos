@@ -46,26 +46,10 @@ class AddProductFragment : BaseFragment() {
 
         val currentContext = inflater.inflate(R.layout.fragment_add_product, container, false)
 
-
-
         (activity as MainActivity).supportActionBar?.setTitle("Cadastro de despesas")
-
-
-
-        val dataLayout = currentContext.findViewById<EditText>(R.id.edit_text_data)
-
-
-//        dataLayout.setOnClickListener {
-//
-//            pick(currentContext.context)
-//
-//        }
-
 
         setHasOptionsMenu(true)
 
-
-        // Inflate the layout for this fragment
         return currentContext
     }
 
@@ -76,7 +60,6 @@ class AddProductFragment : BaseFragment() {
         datePickerDialog.show()
 
     }
-
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -218,20 +201,20 @@ class AddProductFragment : BaseFragment() {
 
     }
 
-    fun setMask(editText: EditText,type: String){
-        var typeText = ""
-        when(type){
-            "cpf" -> typeText = "NNN.NNN.NNN-NN"
-            "data" -> typeText = "NN/NN/NNNN"
-            "telefone" -> typeText = "(NN) NNNNN-NNNN"
-        }
-
-        val smf = SimpleMaskFormatter(typeText)
-        val mtw = MaskTextWatcher(editText,smf)
-        editText.addTextChangedListener(mtw)
-
-
-    }
+//    fun setMask(editText: EditText,type: String){
+//        var typeText = ""
+//        when(type){
+//            "cpf" -> typeText = "NNN.NNN.NNN-NN"
+//            "data" -> typeText = "NN/NN/NNNN"
+//            "telefone" -> typeText = "(NN) NNNNN-NNNN"
+//        }
+//
+//        val smf = SimpleMaskFormatter(typeText)
+//        val mtw = MaskTextWatcher(editText,smf)
+//        editText.addTextChangedListener(mtw)
+//
+//
+//    }
 
 
     private fun deleteProd(){

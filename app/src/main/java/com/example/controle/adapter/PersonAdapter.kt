@@ -47,7 +47,7 @@ class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<Person
 
             AlertDialog.Builder(view.context).apply {
                 setTitle(pers[position].nome+" Selecionado!!")
-                setMessage("Usar esse produto ou editar?")
+                setMessage("Usar esses dados ou editar?")
                 setPositiveButton("Usar"){_,_ ->
 
                     val action = ListaUsuarioFragmentDirections.actionListaUsuariosToDadosUsuarios()

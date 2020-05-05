@@ -1,12 +1,11 @@
 package com.example.controle.ui
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import androidx.navigation.Navigation
 
@@ -37,6 +36,7 @@ class AddPersonFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+        setHasOptionsMenu(true)
         (activity as MainActivity).supportActionBar?.setTitle("Cadastro de usuário")
         return inflater.inflate(R.layout.fragment_add_person, container, false)
     }
@@ -150,5 +150,37 @@ class AddPersonFragment : BaseFragment() {
 
 
     }
+
+
+    private fun deletePer(){
+        AlertDialog.Builder(context).apply {
+            setTitle("Deletar esse usuário?")
+            setMessage("Esta operação irá apagar este registro.")
+            setPositiveButton("Sim"){_,_->
+                launch {
+                    ProductDatabase(context).getPersonDao().deletePerson(person!!)
+                    val action = AddPersonFragmentDirections.actionAddPersonToLista()
+                    Navigation.findNavController(view!!).navigate(action)
+                }
+            }
+            setNegativeButton("Não"){_,_->
+
+            }
+        }.create().show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.delete -> if(person != null) deletePer() else context?.toast("Não pode ser deletado")
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu,menu)
+    }
+
 
 }
