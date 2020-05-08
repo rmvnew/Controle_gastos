@@ -115,7 +115,16 @@ class AddPersonFragment : BaseFragment() {
             launch {
                 context?.let {
 
-                    val per = Person(personNome,personCpf,personData,personTelefone,personEmail,personAgua,personEnergia,personApartamento)
+                    val per = Person(
+                        personNome,
+                        personCpf,
+                        personData,
+                        personTelefone,
+                        personEmail,
+                        personAgua,
+                        personEnergia,
+                        personApartamento
+                    )
 
                     if(person == null){
                         ProductDatabase(it).getPersonDao().addPerson(per)

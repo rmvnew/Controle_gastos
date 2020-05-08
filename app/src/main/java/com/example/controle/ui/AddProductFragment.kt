@@ -180,7 +180,7 @@ class AddProductFragment : BaseFragment() {
                         id: Long
                     ) {
                         edit_text_name.setText(options.get(position))
-                        if(!sp_option.selectedItem.toString().equals("Agua")||!sp_option.selectedItem.toString().equals("Agua")){
+                        if(!sp_option.selectedItem.toString().equals("Agua")&&!sp_option.selectedItem.toString().equals("Energia")){
                             edit_text_consumo.isEnabled = false
                         }else{
                             edit_text_consumo.isEnabled = true

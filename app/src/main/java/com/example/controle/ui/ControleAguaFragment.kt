@@ -134,7 +134,7 @@ class ControleAguaFragment : BaseFragment() {
                 lineChart.setDescription("Despesas")
                 lineChart.data = data
                 lineChart.invalidate()
-                lineChart.animateX(5000)
+                lineChart.animateX(2000)
 
             }
         }
