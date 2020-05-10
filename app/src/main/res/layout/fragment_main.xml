@@ -82,62 +82,63 @@
 
     <Button
         android:id="@+id/btn_historico"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="Historico"
+        app:icon="@drawable/ic_history"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_despesas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_despesas" />
+
+    <Button
+        android:id="@+id/btn_consumo"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="Consumo"
+        app:icon="@drawable/ic_tonality"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_usuario" />
+
+    <Button
+        android:id="@+id/btn_usuario"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-        app:icon="@drawable/ic_history"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:text="Historico"
+        android:text="usuário"
+        app:icon="@drawable/ic_person_add_black_24dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_consumo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_consumo"
+        android:id="@+id/btn_despesas"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-        app:icon="@drawable/ic_tonality"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:text="Consumo"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_historico"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_historico" />
-
-    <Button
-        android:id="@+id/btn_usuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-        app:icon="@drawable/ic_person_add_black_24dp"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:text="usuário"
-        app:layout_constraintEnd_toStartOf="@+id/btn_despesas"
+        android:text="despesas"
+        app:icon="@drawable/ic_monetization_on_black_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_historico"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_historico" />
-
-    <Button
-        android:id="@+id/btn_despesas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-        app:icon="@drawable/ic_monetization_on_black_24dp"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:text="despesas"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_usuario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

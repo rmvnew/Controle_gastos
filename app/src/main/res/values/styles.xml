@@ -9,9 +9,15 @@
     </style>
 
     <!-- Theme.AppCompat.Light.Dialog -->
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorAccent">@color/AZUL_STEEL_BLUE</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 
 </resources>

@@ -4,3 +4,6 @@ consumo e valor. O objetivo desta correção foi modificar
 comportamento para aceitar ponto e virgula e adicionado
 tratamento para realizar calculo no sistema ao entrar
 com dados separados por virgula.
+
+2- Adicionada tela de abertura, correção nos tempos das
+animações e modifição no layout do recyclerView das despesas

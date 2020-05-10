@@ -178,7 +178,7 @@ class MainFragment : BaseFragment() {
                 barChart.setDescription("Despesas")
                 barChart.data = data
                 barChart.invalidate()
-                barChart.animateY(5000)
+                barChart.animateY(1800)
 
             }
         }

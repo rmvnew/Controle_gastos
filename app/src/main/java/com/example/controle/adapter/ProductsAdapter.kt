@@ -38,18 +38,18 @@ class ProductsAdapter(private val prods:List<Product>): RecyclerView.Adapter<Pro
 
            AlertDialog.Builder(view.context).apply {
                setTitle(prods[position].nome+" Selecionado!!")
-               setMessage("Usar esse produto ou editar?")
-               setPositiveButton("Usar"){_,_ ->
-
-
-
-               }
-
-               setNegativeButton("Editar"){_,_ ->
+               setMessage("Editar esse lançamento?")
+               setPositiveButton("Sim"){_,_ ->
 
                    val action = HomeFragmentDirections.actionAddProduct()
                    action.product = prods[position]
                    Navigation.findNavController(view).navigate(action)
+
+               }
+
+               setNegativeButton("Não"){_,_ ->
+
+
 
                }
            }.create().show()

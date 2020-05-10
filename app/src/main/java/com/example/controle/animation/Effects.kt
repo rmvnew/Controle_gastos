@@ -21,11 +21,50 @@ class Effects {
             view.startAnimation(effect)
         }
 
-        //efeito aparecer
+        //efeito rodar
         fun rotateEffect(view: View, context: Context){
             var effect = AnimationUtils.loadAnimation(context, R.anim.rotate)
             view.startAnimation(effect)
         }
+
+        //aparecer de cima
+        fun aparecerDeCima(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.slide_down)
+            view.startAnimation(effect)
+        }
+
+
+        //aparecer de baixo
+        fun aparecerDebaixo(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.slide_up)
+            view.startAnimation(effect)
+        }
+
+        //crescer
+        fun crescer(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.zoom_in)
+            view.startAnimation(effect)
+        }
+
+        //diminuir
+        fun diminuir(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.zoom_out)
+            view.startAnimation(effect)
+        }
+
+
+        //vir da esquerda
+        fun virDaEsquerda(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.slide_left)
+            view.startAnimation(effect)
+        }
+
+        //vir da direita
+        fun virDaDireita(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.slide_rigth)
+            view.startAnimation(effect)
+        }
+
 
     }
 
