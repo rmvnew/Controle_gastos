@@ -119,18 +119,18 @@ class DateUtils() {
 
                    when (getMonth(item.data)) {
 
-                       "Jan" -> valorMeses[0] += item.valor.toDouble()
-                       "Fev" -> valorMeses[1] += item.valor.toDouble()
-                       "Mar" -> valorMeses[2] += item.valor.toDouble()
-                       "Abr" -> valorMeses[3] += item.valor.toDouble()
-                       "Mai" -> valorMeses[4] += item.valor.toDouble()
-                       "Jun" -> valorMeses[5] += item.valor.toDouble()
-                       "Jul" -> valorMeses[6] += item.valor.toDouble()
-                       "Ago" -> valorMeses[7] += item.valor.toDouble()
-                       "Set" -> valorMeses[8] += item.valor.toDouble()
-                       "Out" -> valorMeses[9] += item.valor.toDouble()
-                       "Nov" -> valorMeses[10] += item.valor.toDouble()
-                       "Dez" -> valorMeses[11] += item.valor.toDouble()
+                       "Jan" -> valorMeses[0] += item.valor.replace(",",".").toDouble()
+                       "Fev" -> valorMeses[1] += item.valor.replace(",",".").toDouble()
+                       "Mar" -> valorMeses[2] += item.valor.replace(",",".").toDouble()
+                       "Abr" -> valorMeses[3] += item.valor.replace(",",".").toDouble()
+                       "Mai" -> valorMeses[4] += item.valor.replace(",",".").toDouble()
+                       "Jun" -> valorMeses[5] += item.valor.replace(",",".").toDouble()
+                       "Jul" -> valorMeses[6] += item.valor.replace(",",".").toDouble()
+                       "Ago" -> valorMeses[7] += item.valor.replace(",",".").toDouble()
+                       "Set" -> valorMeses[8] += item.valor.replace(",",".").toDouble()
+                       "Out" -> valorMeses[9] += item.valor.replace(",",".").toDouble()
+                       "Nov" -> valorMeses[10] += item.valor.replace(",",".").toDouble()
+                       "Dez" -> valorMeses[11] += item.valor.replace(",",".").toDouble()
                    }
                }
 
@@ -162,18 +162,18 @@ class DateUtils() {
                 if(item.nome.contains(string) && (getYear(item.data) == ano.toInt())) {
 
                     when (getMonth(item.data)) {
-                        "Jan" -> valorMeses[0] += item.consumer.toDouble()
-                        "Fev" -> valorMeses[1] += item.consumer.toDouble()
-                        "Mar" -> valorMeses[2] += item.consumer.toDouble()
-                        "Abr" -> valorMeses[3] += item.consumer.toDouble()
-                        "Mai" -> valorMeses[4] += item.consumer.toDouble()
-                        "Jun" -> valorMeses[5] += item.consumer.toDouble()
-                        "Jul" -> valorMeses[6] += item.consumer.toDouble()
-                        "Ago" -> valorMeses[7] += item.consumer.toDouble()
-                        "Set" -> valorMeses[8] += item.consumer.toDouble()
-                        "Out" -> valorMeses[9] += item.consumer.toDouble()
-                        "Nov" -> valorMeses[10] += item.consumer.toDouble()
-                        "Dez" -> valorMeses[11] += item.consumer.toDouble()
+                        "Jan" -> valorMeses[0] += item.consumer.replace(",",".").toDouble()
+                        "Fev" -> valorMeses[1] += item.consumer.replace(",",".").toDouble()
+                        "Mar" -> valorMeses[2] += item.consumer.replace(",",".").toDouble()
+                        "Abr" -> valorMeses[3] += item.consumer.replace(",",".").toDouble()
+                        "Mai" -> valorMeses[4] += item.consumer.replace(",",".").toDouble()
+                        "Jun" -> valorMeses[5] += item.consumer.replace(",",".").toDouble()
+                        "Jul" -> valorMeses[6] += item.consumer.replace(",",".").toDouble()
+                        "Ago" -> valorMeses[7] += item.consumer.replace(",",".").toDouble()
+                        "Set" -> valorMeses[8] += item.consumer.replace(",",".").toDouble()
+                        "Out" -> valorMeses[9] += item.consumer.replace(",",".").toDouble()
+                        "Nov" -> valorMeses[10] += item.consumer.replace(",",".").toDouble()
+                        "Dez" -> valorMeses[11] += item.consumer.replace(",",".").toDouble()
                     }
 
                 }

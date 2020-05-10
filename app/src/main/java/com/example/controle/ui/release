@@ -1,0 +1,6 @@
+10/05/2020 08:16AM
+1 - Modificação no teclado do formulário de cadastro nos campos
+consumo e valor. O objetivo desta correção foi modificar
+comportamento para aceitar ponto e virgula e adicionado
+tratamento para realizar calculo no sistema ao entrar
+com dados separados por virgula.
