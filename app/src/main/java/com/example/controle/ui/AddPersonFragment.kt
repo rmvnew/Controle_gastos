@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.example.controle.R
 import com.example.controle.animation.Effects
@@ -189,8 +190,12 @@ class AddPersonFragment : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+
+        AjudaFragment.setNumber(2)
+
         when(item.itemId){
-            R.id.men_ajuda -> Toast.makeText(context,"Abre menu ajuda", Toast.LENGTH_SHORT).show()
+            R.id.men_ajuda -> findNavController().navigate(R.id.actionAddPersonToAjuda)
 
         }
         return super.onOptionsItemSelected(item)
@@ -200,6 +205,8 @@ class AddPersonFragment : BaseFragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu,menu)
     }
+
+
 
 
 }

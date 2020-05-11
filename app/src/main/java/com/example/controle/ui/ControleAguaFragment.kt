@@ -2,15 +2,14 @@ package com.example.controle.ui
 
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.util.DateUtils
@@ -34,7 +33,7 @@ class ControleAguaFragment : BaseFragment() {
         (activity as MainActivity).supportActionBar?.setTitle("Controle de consumo")
         // Inflate the layout for this fragment
 
-
+        setHasOptionsMenu(true)
 
         return inflater.inflate(R.layout.fragment_controle_agua, container, false)
 
@@ -139,6 +138,22 @@ class ControleAguaFragment : BaseFragment() {
             }
         }
 
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        AjudaFragment.setNumber(4)
+
+        when(item.itemId){
+            R.id.men_ajuda -> findNavController().navigate(R.id.actionControleConsumoToAjuda)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu,menu)
     }
 
 

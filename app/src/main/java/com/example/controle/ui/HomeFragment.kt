@@ -1,13 +1,12 @@
 package com.example.controle.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.SpinnerAdapter
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
@@ -29,6 +28,7 @@ class HomeFragment : BaseFragment() {
         // Inflate the layout for this fragment
         (activity as MainActivity).supportActionBar?.setTitle("Despesas Registradas")
 
+        setHasOptionsMenu(true)
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -63,5 +63,22 @@ class HomeFragment : BaseFragment() {
         }
 
     }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        AjudaFragment.setNumber(6)
+
+        when(item.itemId){
+            R.id.men_ajuda -> findNavController().navigate(R.id.actionHomeToAjuda)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu,menu)
+    }
+
 
 }

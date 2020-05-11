@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
@@ -248,8 +249,11 @@ class AddProductFragment : BaseFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        AjudaFragment.setNumber(3)
+
         when(item.itemId){
-            R.id.men_ajuda -> Toast.makeText(context,"Abre menu ajuda",Toast.LENGTH_SHORT).show()
+            R.id.men_ajuda -> findNavController().navigate(R.id.actionAddDispesasToAjuda)
         }
         return super.onOptionsItemSelected(item)
     }

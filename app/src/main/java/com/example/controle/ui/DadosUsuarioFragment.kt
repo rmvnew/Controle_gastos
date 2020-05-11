@@ -6,12 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.example.controle.R
 import com.example.controle.animation.Effects
@@ -31,6 +30,7 @@ class DadosUsuarioFragment : BaseFragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+        setHasOptionsMenu(true)
 
         (activity as MainActivity).supportActionBar?.setTitle("Dados do usuário")
 
@@ -183,6 +183,24 @@ class DadosUsuarioFragment : BaseFragment() {
 
 
     }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        AjudaFragment.setNumber(5)
+
+        when(item.itemId){
+            R.id.men_ajuda -> findNavController().navigate(R.id.actionDadosUsuarioToAjuda)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu,menu)
+    }
+
 
 
 }
