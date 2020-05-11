@@ -12,18 +12,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
         android:clickable="true"
         android:src="@drawable/ic_view_list"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/btn_save_usuario"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="Salvar"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_remover"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <Button
+        android:id="@+id/btn_remover"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="remover"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_delete"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_save_usuario"
+        app:layout_constraintEnd_toStartOf="@+id/btn_home_usuario"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_save_usuario" />
+
+    <Button
+        android:id="@+id/btn_home_usuario"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="Home"
+        android:textSize="10sp"
+        app:icon="@drawable/ic_home"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_save_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_remover" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +86,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -65,8 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
                 android:hint="CPF"
                 android:textColor="@android:color/black"
@@ -89,8 +142,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
                 android:hint="Nascimento"
                 android:textColor="@android:color/black"
@@ -113,8 +166,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
                 android:hint="Telefone"
                 android:textColor="@android:color/black"
@@ -138,8 +191,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="0dp"
                 android:hint="Email"
                 android:textColor="@android:color/black"
@@ -162,8 +215,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="0dp"
                 android:hint="Agua"
                 android:textColor="@android:color/black"
@@ -186,8 +239,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="0dp"
                 android:hint="Energia"
                 android:textColor="@android:color/black"
@@ -210,9 +263,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
                 android:hint="Apartamento"
                 android:textColor="@android:color/black"
 
@@ -227,52 +280,6 @@
                     android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-
-                    >
-                    <Button
-                        android:id="@+id/btn_save_usuario"
-                        android:layout_width="150dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Salvar"
-                        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-                        app:icon="@drawable/ic_done"
-                        style="@style/Widget.MaterialComponents.Button.Icon"
-                        />
-
-                    <Button
-                        android:id="@+id/btn_home_usuario"
-                        android:layout_width="150dp"
-                        android:textSize="14sp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Home"
-                        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-                        app:icon="@drawable/ic_home"
-                        style="@style/Widget.MaterialComponents.Button.Icon"
-                        />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
 
 
         </LinearLayout>

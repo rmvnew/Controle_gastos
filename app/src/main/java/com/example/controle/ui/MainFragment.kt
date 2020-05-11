@@ -80,7 +80,7 @@ class MainFragment : BaseFragment() {
 
         btn_usuario.setOnClickListener {
             Effects.clickEffect(btn_usuario,activity!!)
-            val action = MainFragmentDirections.actionMainToAddPerson()
+            val action = MainFragmentDirections.actionHomeToUsuariosCadastrados()
             Navigation.findNavController(it).navigate(action)
         }
 

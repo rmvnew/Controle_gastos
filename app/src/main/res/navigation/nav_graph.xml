@@ -21,8 +21,8 @@
             android:id="@+id/actionHomeToAgua"
             app:destination="@id/controleAguaFragment" />
         <action
-            android:id="@+id/actionMainToAddPerson"
-            app:destination="@id/addPersonFragment" />
+            android:id="@+id/actionHomeToUsuariosCadastrados"
+            app:destination="@id/listaUsuarioFragment" />
     </fragment>
 
 

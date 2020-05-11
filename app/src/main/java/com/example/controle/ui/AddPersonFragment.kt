@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.Navigation
 
 import com.example.controle.R
@@ -143,6 +144,15 @@ class AddPersonFragment : BaseFragment() {
 
         }
 
+
+        btn_remover.setOnClickListener {
+            if(person != null){
+                deletePer()
+            }else{
+                Toast.makeText(context,"Não pode ser deletado",Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
     fun setMask(editText: EditText,type: String){
@@ -180,7 +190,7 @@ class AddPersonFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.delete -> if(person != null) deletePer() else context?.toast("Não pode ser deletado")
+            R.id.men_ajuda -> Toast.makeText(context,"Abre menu ajuda", Toast.LENGTH_SHORT).show()
 
         }
         return super.onOptionsItemSelected(item)

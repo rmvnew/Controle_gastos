@@ -149,6 +149,14 @@ class AddProductFragment : BaseFragment() {
         }
 
 
+        btn_remover.setOnClickListener {
+            if(product != null){
+                deleteProd()
+            }else{
+                Toast.makeText(context,"Não pode ser deletado",Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
 
         val options = arrayOf("","Agua","Energia","Internet","Apartamento")
@@ -241,7 +249,7 @@ class AddProductFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.delete -> if(product != null) deleteProd() else context?.toast("Não pode ser deletado")
+            R.id.men_ajuda -> Toast.makeText(context,"Abre menu ajuda",Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }

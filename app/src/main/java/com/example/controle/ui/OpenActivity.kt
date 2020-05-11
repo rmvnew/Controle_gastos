@@ -23,7 +23,7 @@ class OpenActivity : AppCompatActivity() {
         val expense = findViewById<ImageView>(R.id.txt_expenses)
         val manager = findViewById<ImageView>(R.id.txt_manager)
         val grafico = findViewById<ImageView>(R.id.txt_grafico)
-        txt_versao.setText("Versão: 1.10")
+        txt_versao.setText("Versão: 1.11")
 
         Effects.virDaDireita(expense,this)
         Effects.virDaEsquerda(manager,this)

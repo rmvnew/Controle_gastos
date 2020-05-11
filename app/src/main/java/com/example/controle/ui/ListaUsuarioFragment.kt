@@ -26,7 +26,7 @@ class ListaUsuarioFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        (activity as MainActivity).supportActionBar?.setTitle("Dados de usuários")
+        (activity as MainActivity).supportActionBar?.setTitle("Usuários cadastrados")
         return inflater.inflate(R.layout.fragment_lista_usuario, container, false)
     }
 
