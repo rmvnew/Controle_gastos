@@ -7,7 +7,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.controle.R
 
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

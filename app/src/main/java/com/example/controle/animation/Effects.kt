@@ -65,6 +65,33 @@ class Effects {
             view.startAnimation(effect)
         }
 
+        //alpha
+        fun efeitoFundo01(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.fade_fundo01)
+            view.startAnimation(effect)
+        }
+
+        //alpha
+        fun efeitoFundo02(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.fade_fundo02)
+            view.startAnimation(effect)
+        }
+
+
+        fun girarDireita(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.gira_direita)
+            view.startAnimation(effect)
+        }
+
+        fun girarEsquerda(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.gira_esquerda)
+            view.startAnimation(effect)
+        }
+
+        fun pulso(view: View, context: Context){
+            var effect = AnimationUtils.loadAnimation(context, R.anim.pulse)
+            view.startAnimation(effect)
+        }
 
     }
 

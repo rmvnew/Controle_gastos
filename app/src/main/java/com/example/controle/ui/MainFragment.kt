@@ -30,6 +30,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.example.controle.model.Product
 import com.github.mikephil.charting.charts.BarChart
@@ -56,17 +57,30 @@ class MainFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-setHasOptionsMenu(true)
+
+
+
+
+
+
+        setHasOptionsMenu(true)
 
         val currentContext = inflater.inflate(R.layout.fragment_main, container, false)
+
+
 
        // setupPieChart()
 
         (activity as MainActivity).supportActionBar?.setTitle("Principal")
         (activity as MainActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.DKGRAY))
 
+//        fragmentManager!!.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
+       //     activity!!.supportFragmentManager.popBackStack()
+
         return currentContext
     }
+
 
 
 
@@ -104,6 +118,13 @@ setHasOptionsMenu(true)
             val action = MainFragmentDirections.actionHomeToAgua()
             Navigation.findNavController(it).navigate(action)
 
+        }
+
+
+        btn_fab_settings.setOnClickListener {
+            Effects.clickEffect(btn_fab_settings,activity!!)
+            val action = MainFragmentDirections.actionMainToPassword()
+            Navigation.findNavController(it).navigate(action)
         }
 
 

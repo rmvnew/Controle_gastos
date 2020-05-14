@@ -3,8 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/securityFragment">
 
+    <fragment
+        android:id="@+id/securityFragment"
+        android:name="com.example.controle.ui.SecurityFragment"
+        android:label="fragment_security"
+        tools:layout="@layout/fragment_security" >
+        <action
+            android:id="@+id/actionSecurityToMain"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/securityFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
@@ -13,19 +24,27 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/actionMainToList"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            />
         <action
             android:id="@+id/actionMainToAdd"
-            app:destination="@id/addProductFragment" />
+            app:destination="@id/addProductFragment"
+            />
         <action
             android:id="@+id/actionHomeToAgua"
-            app:destination="@id/controleAguaFragment" />
+            app:destination="@id/controleAguaFragment"
+            />
         <action
             android:id="@+id/actionHomeToUsuariosCadastrados"
-            app:destination="@id/listaUsuarioFragment" />
+            app:destination="@id/listaUsuarioFragment"
+            />
         <action
             android:id="@+id/actionMainToAjuda"
-            app:destination="@id/ajudaFragment" />
+            app:destination="@id/ajudaFragment"
+            />
+        <action
+            android:id="@+id/actionMainToPassword"
+            app:destination="@id/newPasswordFragment" />
     </fragment>
 
 
@@ -141,5 +160,11 @@
         android:name="com.example.controle.ui.AjudaFragment"
         android:label="fragment_ajuda"
         tools:layout="@layout/fragment_ajuda" />
+    <fragment
+        android:id="@+id/newPasswordFragment"
+        android:name="com.example.controle.ui.SettingsFragment"
+        android:label="fragment_new_password"
+        tools:layout="@layout/fragment_settings" />
+
 
 </navigation>

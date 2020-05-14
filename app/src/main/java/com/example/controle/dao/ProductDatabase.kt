@@ -4,16 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.controle.model.Password
 import com.example.controle.model.Person
 import com.example.controle.model.Product
 
 @Database(
-    entities = [Product::class,Person::class],version = 5
+    entities = [Product::class,Person::class,Password::class],version = 6
 )
 abstract class ProductDatabase :RoomDatabase(){
 
     abstract fun getProductDao():ProductDao
     abstract fun getPersonDao():PersonDao
+    abstract fun getPasswordDao():PasswordDao
 
     companion object{
        @Volatile private var instance: ProductDatabase? = null

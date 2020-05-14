@@ -3,16 +3,13 @@ package com.example.controle.ui
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -20,8 +17,6 @@ import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Product
-import com.github.rtoshiro.util.format.SimpleMaskFormatter
-import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.coroutines.launch
 import java.util.*
@@ -104,9 +99,9 @@ class AddProductFragment : BaseFragment() {
         }
 
 
-        btn_save.setOnClickListener { view ->
+        btn_entrar.setOnClickListener { view ->
 
-            Effects.clickEffect(btn_save,activity!!)
+            Effects.clickEffect(btn_entrar,activity!!)
 
             val prodName = edit_text_name.text.toString().trim()
             val prodData = edit_text_data.text.toString().trim()
