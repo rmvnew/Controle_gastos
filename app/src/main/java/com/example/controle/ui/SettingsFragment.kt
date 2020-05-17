@@ -61,6 +61,9 @@ class SettingsFragment : BaseFragment() {
                         txt_password.requestFocus()
                     }else{
                         TextInputEditText_password.visibility = View.INVISIBLE
+                        cb_biometria.visibility = View.INVISIBLE
+                        cb_biometria.isChecked = false
+                        btn_salvar_password.visibility = View.INVISIBLE
                     }
                 }
                 btn_salvar_password.setOnClickListener {
@@ -69,6 +72,8 @@ class SettingsFragment : BaseFragment() {
 
                 }
             } else {
+                cb_senha.isChecked = false
+                cb_biometria.isChecked = false
                 setItemsInvisibility()
                 setStatusDefault(share)
             }

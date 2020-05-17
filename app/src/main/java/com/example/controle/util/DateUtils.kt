@@ -1,20 +1,19 @@
 package com.example.controle.util
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.controle.model.Consumer
 import com.example.controle.model.Expenses
 import com.example.controle.model.Product
+import com.example.controle.ui.BaseFragment
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
-class DateUtils() {
+class DateUtils() : BaseFragment(){
 
 
     companion object{
@@ -198,7 +197,12 @@ class DateUtils() {
             }
         }
 
+
+
         fun getYears():Array<String?>{
+
+
+
             var listaDeAnos = arrayOfNulls<String>(100)
 
             for(i in 0..99){
@@ -207,6 +211,9 @@ class DateUtils() {
 
             return listaDeAnos
         }
+
+
+
 
 
     }

@@ -149,9 +149,9 @@ class SecurityFragment : BaseFragment() {
 
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Expenses Manager")
-            .setDescription("Use device biometric feature for login to account")
-            .setNegativeButtonText("use email for login")
+            .setTitle("Controle de Acesso")
+            .setDescription("Use o leitor biometrico para efetuar login")
+            .setNegativeButtonText("Ou use o pin para logar")
             .build()
 
         finger.setOnClickListener {

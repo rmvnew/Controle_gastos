@@ -58,31 +58,19 @@ class MainFragment : BaseFragment() {
     ): View? {
 
 
-
-
-
-
-
         setHasOptionsMenu(true)
 
         val currentContext = inflater.inflate(R.layout.fragment_main, container, false)
 
 
 
-       // setupPieChart()
 
         (activity as MainActivity).supportActionBar?.setTitle("Principal")
         (activity as MainActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.DKGRAY))
 
-//        fragmentManager!!.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-
-       //     activity!!.supportFragmentManager.popBackStack()
 
         return currentContext
     }
-
-
-
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -92,7 +80,7 @@ class MainFragment : BaseFragment() {
 
 
         btn_usuario.setOnClickListener {
-            Effects.clickEffect(btn_usuario,activity!!)
+            Effects.clickEffect(btn_usuario, activity!!)
             val action = MainFragmentDirections.actionHomeToUsuariosCadastrados()
             Navigation.findNavController(it).navigate(action)
         }
@@ -100,13 +88,13 @@ class MainFragment : BaseFragment() {
 
 
         btn_historico.setOnClickListener {
-            Effects.clickEffect(btn_historico,activity!!)
+            Effects.clickEffect(btn_historico, activity!!)
             val action = MainFragmentDirections.actionMainToList()
             Navigation.findNavController(it).navigate(action)
         }
 
         btn_despesas.setOnClickListener {
-            Effects.clickEffect(btn_despesas,activity!!)
+            Effects.clickEffect(btn_despesas, activity!!)
 
             val action = MainFragmentDirections.actionMainToAdd()
             Navigation.findNavController(it).navigate(action)
@@ -114,7 +102,7 @@ class MainFragment : BaseFragment() {
         }
 
         btn_consumo.setOnClickListener {
-            Effects.clickEffect(btn_consumo,activity!!)
+            Effects.clickEffect(btn_consumo, activity!!)
             val action = MainFragmentDirections.actionHomeToAgua()
             Navigation.findNavController(it).navigate(action)
 
@@ -122,10 +110,11 @@ class MainFragment : BaseFragment() {
 
 
         btn_fab_settings.setOnClickListener {
-            Effects.clickEffect(btn_fab_settings,activity!!)
+            Effects.clickEffect(btn_fab_settings, activity!!)
             val action = MainFragmentDirections.actionMainToPassword()
             Navigation.findNavController(it).navigate(action)
         }
+
 
 
         var options = DateUtils.getYears()
@@ -135,11 +124,11 @@ class MainFragment : BaseFragment() {
 
         spinnerMain.adapter =
             context?.let {
-                ArrayAdapter<String>(it,android.R.layout.simple_list_item_1,options)
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, options)
             }
 
         spinnerMain.setSelection(DateUtils.getSpinnerCurrentYear())
-        spinnerMain.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinnerMain.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
 
@@ -154,7 +143,7 @@ class MainFragment : BaseFragment() {
             ) {
 
 
-                val valor =  spinnerMain.selectedItem.toString()
+                val valor = spinnerMain.selectedItem.toString()
 
                 setupPieChart(valor)
 
@@ -163,17 +152,11 @@ class MainFragment : BaseFragment() {
         }
 
 
-
-
-
     }
 
 
-
-
     @RequiresApi(Build.VERSION_CODES.O)
-    fun setupPieChart(string: String){
-
+    fun setupPieChart(string: String) {
 
 
         launch {
@@ -181,18 +164,23 @@ class MainFragment : BaseFragment() {
 
                 var barEntries = ArrayList<BarEntry>()
                 val valor = ProductDatabase(it!!).getProductDao().getAllProducts()
-                val listaMeses = DateUtils.getExpenses(valor,string)
+                val listaMeses = DateUtils.getExpenses(valor, string)
 
-                for ((index,value) in listaMeses.withIndex()){
+                for ((index, value) in listaMeses.withIndex()) {
 
-                    barEntries.add(BarEntry(listaMeses[index].value.toFloat(),DateUtils.getMonthInteger(listaMeses[index].expenses)))
+                    barEntries.add(
+                        BarEntry(
+                            listaMeses[index].value.toFloat(),
+                            DateUtils.getMonthInteger(listaMeses[index].expenses)
+                        )
+                    )
 
                 }
 
-                var dataset = BarDataSet(barEntries,"Despesas")
+                var dataset = BarDataSet(barEntries, "Despesas")
                 dataset.setColors(ColorTemplate.COLORFUL_COLORS)
                 dataset.valueTextSize = 10f
-                val labels = listaMeses.map { Product -> Product.expenses}
+                val labels = listaMeses.map { Product -> Product.expenses }
 
                 val data = BarData(labels, dataset)
                 barChart.setDescription("Despesas")
@@ -211,7 +199,7 @@ class MainFragment : BaseFragment() {
 
         AjudaFragment.setNumber(0)
 
-        when(item.itemId){
+        when (item.itemId) {
             R.id.men_ajuda -> findNavController().navigate(R.id.actionMainToAjuda)
 
         }
@@ -220,9 +208,8 @@ class MainFragment : BaseFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu,menu)
+        inflater.inflate(R.menu.menu, menu)
     }
-
 
 
 }
