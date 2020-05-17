@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -17,6 +18,8 @@ import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Product
+import com.github.rtoshiro.util.format.SimpleMaskFormatter
+import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.coroutines.launch
 import java.util.*
@@ -67,18 +70,19 @@ class AddProductFragment : BaseFragment() {
         edit_text_consumo.isEnabled = false
        // setMask(edit_text_data,"data")
 
-        edit_text_data.setOnFocusChangeListener { v, hasFocus ->
-            if(hasFocus) {
-                pick(activity!!)
-            }
-        }
+//        edit_text_data.setOnFocusChangeListener { v, hasFocus ->
+//            if(hasFocus) {
+//                pick(activity!!)
+//            }
+//        }
+//
+//        edit_text_data.setOnClickListener {
+//            pick(activity!!)
+//        }
+//
+//        1
 
-        edit_text_data.setOnClickListener {
-            pick(activity!!)
-        }
-
-        1
-
+        setMask(edit_text_data,"data")
 
         arguments?.let {
             product = AddProductFragmentArgs.fromBundle(it).product
@@ -205,20 +209,20 @@ class AddProductFragment : BaseFragment() {
 
     }
 
-//    fun setMask(editText: EditText,type: String){
-//        var typeText = ""
-//        when(type){
-//            "cpf" -> typeText = "NNN.NNN.NNN-NN"
-//            "data" -> typeText = "NN/NN/NNNN"
-//            "telefone" -> typeText = "(NN) NNNNN-NNNN"
-//        }
-//
-//        val smf = SimpleMaskFormatter(typeText)
-//        val mtw = MaskTextWatcher(editText,smf)
-//        editText.addTextChangedListener(mtw)
-//
-//
-//    }
+    fun setMask(editText: EditText, type: String){
+        var typeText = ""
+        when(type){
+            "cpf" -> typeText = "NNN.NNN.NNN-NN"
+            "data" -> typeText = "NN/NN/NNNN"
+            "telefone" -> typeText = "(NN) NNNNN-NNNN"
+        }
+
+        val smf = SimpleMaskFormatter(typeText)
+        val mtw = MaskTextWatcher(editText,smf)
+        editText.addTextChangedListener(mtw)
+
+
+    }
 
 
     private fun deleteProd(){

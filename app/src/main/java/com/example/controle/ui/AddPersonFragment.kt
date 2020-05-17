@@ -70,15 +70,15 @@ class AddPersonFragment : BaseFragment() {
         }
 
 
-        txtNascimento.setOnFocusChangeListener { v, hasFocus ->
-            if(hasFocus) {
-                pick(activity!!)
-            }
-        }
+//        txtNascimento.setOnFocusChangeListener { v, hasFocus ->
+//            if(hasFocus) {
+//                pick(activity!!)
+//            }
+//        }
 
-        txtNascimento.setOnClickListener {
-            pick(activity!!)
-        }
+//        txtNascimento.setOnClickListener {
+//            pick(activity!!)
+//        }
 
 
         btn_home_usuario.setOnClickListener {
@@ -92,7 +92,7 @@ class AddPersonFragment : BaseFragment() {
         }
 
         setMask(txtCpf,"cpf")
-       // setMask(txtNascimento,"data")
+        setMask(txtNascimento,"data")
         setMask(txtTelefone,"telefone")
 
 
