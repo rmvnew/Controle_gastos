@@ -86,13 +86,13 @@ class SecurityFragment : BaseFragment() {
         btn_entrar.setOnClickListener {
             Effects.clickEffect(btn_entrar, context!!)
 
-            if(txt_password.text.toString().equals(ns.toString())) {
+            if (txt_password.text.toString().equals(ns.toString())) {
                 goToHomeActivity()
-            }else{
+            } else {
                 showToast("Senha inválida!")
             }
 
-            
+
         }
     }
 

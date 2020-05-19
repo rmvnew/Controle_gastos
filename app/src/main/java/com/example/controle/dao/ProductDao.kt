@@ -12,6 +12,12 @@ interface ProductDao {
     @Query("SELECT * FROM product ORDER BY id DESC")
     suspend fun getAllProducts():List<Product>
 
+    @Query("SELECT * FROM product ORDER BY id DESC")
+    fun getAll():List<Product>
+
+    @Query("SELECT * FROM product")
+    fun getAllExpenses():List<Product>
+
     @Insert
     suspend fun addMultpleProducts(vararg prod: Product)
 

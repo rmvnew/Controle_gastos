@@ -38,13 +38,23 @@ class DateUtils() : BaseFragment(){
     }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun getSpinnerCurrentYear():Int{
+        fun getSpinnerCurrentYear(listaDeAnos: List<String>):Int{
 
-            val teste:SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-            val data = LocalDateTime.now()
-            val ano = data.year.toString().substring(2)
-            Log.i("TesteAno",ano.toString())
-            return (ano.toInt()-1)
+            val calendar = Calendar.getInstance()
+            val ano = calendar.get(Calendar.YEAR)
+            var anoAtual = 0
+            for((index,item) in listaDeAnos.withIndex()){
+
+                if(ano == listaDeAnos[index].toInt()){
+                    anoAtual = index
+                }
+
+            }
+
+
+
+
+            return anoAtual
         }
 
         fun getYear(string: String):Int{
@@ -56,6 +66,17 @@ class DateUtils() : BaseFragment(){
 
             return anoNovo
         }
+
+        fun getStrYear(string: String):String{
+            val teste:SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
+            val data = teste.parse(string)
+            val cal = Calendar.getInstance()
+            cal.time = data
+            val anoNovo = cal.get(Calendar.YEAR)
+
+            return anoNovo.toString()
+        }
+
 
 
 

@@ -40,9 +40,7 @@ class SettingsFragment : BaseFragment() {
 
         generalStatus(share)
 
-
         getStatus()
-
 
     }
 

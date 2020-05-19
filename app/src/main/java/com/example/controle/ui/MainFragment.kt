@@ -33,12 +33,15 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.example.controle.model.Product
+import com.example.controle.util.DateUtilsJava
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.utils.ColorTemplate
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -49,6 +52,7 @@ class MainFragment : BaseFragment() {
     val handler = Handler()
     private var myClipboard: ClipboardManager? = null
     private var myClip: ClipData? = null
+    var listaNova: List<String> = listOf()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -117,17 +121,22 @@ class MainFragment : BaseFragment() {
 
 
 
-        var options = DateUtils.getYears()
+        listaDeAnos()
 
 
+    }
 
-
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setSpinner(listaDeAnos: List<String>) {
         spinnerMain.adapter =
             context?.let {
-                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, options)
+
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, listaDeAnos)
+
             }
 
-        spinnerMain.setSelection(DateUtils.getSpinnerCurrentYear())
+        //setar ano atual
+        spinnerMain.setSelection(DateUtils.getSpinnerCurrentYear(listaDeAnos))
         spinnerMain.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -211,5 +220,31 @@ class MainFragment : BaseFragment() {
         inflater.inflate(R.menu.menu, menu)
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun listaDeAnos() {
+
+        var lista: List<Product> = ArrayList<Product>()
+
+
+        launch {
+            context.let {
+                lista = ProductDatabase(it!!).getProductDao().getAllProducts()
+                var listaRecebida: List<String> = ArrayList<String>()
+
+                if (lista.isNullOrEmpty()) {
+                    listaRecebida = DateUtilsJava.getInstance().getYearNow()
+                    setSpinner(listaRecebida)
+                } else {
+                    listaRecebida = DateUtilsJava.getInstance().getYear(lista)
+                    listaRecebida.sort()
+                    setSpinner(listaRecebida)
+                }
+
+            }
+        }
+
+
+    }
 
 }
