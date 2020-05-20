@@ -131,10 +131,14 @@ class AddPersonFragment : BaseFragment() {
                     if(person == null){
                         ProductDatabase(it).getPersonDao().addPerson(per)
                         it.toast("Usuario salvo")
+                        val action = AddPersonFragmentDirections.actionAddPersonToLista()
+                        Navigation.findNavController(view!!).navigate(action)
                     }else{
                         per.id = person!!.id
                         ProductDatabase(it).getPersonDao().updatePerson(per)
                         it.toast("Usuário atualizado")
+                        val action = AddPersonFragmentDirections.actionAddPersonToLista()
+                        Navigation.findNavController(view!!).navigate(action)
                     }
 
 

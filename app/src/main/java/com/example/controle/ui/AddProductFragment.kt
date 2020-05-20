@@ -18,11 +18,13 @@ import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Product
+import com.example.controle.util.ListasUtilsJava
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -35,6 +37,7 @@ class AddProductFragment : BaseFragment() {
     val ano = cal.get(Calendar.YEAR)
     val mes = cal.get(Calendar.MONTH)
     val dia = cal.get(Calendar.DAY_OF_MONTH)
+    var lista:List<String> = ArrayList<String>()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -68,19 +71,7 @@ class AddProductFragment : BaseFragment() {
 
 
         edit_text_consumo.isEnabled = false
-       // setMask(edit_text_data,"data")
 
-//        edit_text_data.setOnFocusChangeListener { v, hasFocus ->
-//            if(hasFocus) {
-//                pick(activity!!)
-//            }
-//        }
-//
-//        edit_text_data.setOnClickListener {
-//            pick(activity!!)
-//        }
-//
-//        1
 
         setMask(edit_text_data,"data")
 
@@ -159,54 +150,84 @@ class AddProductFragment : BaseFragment() {
 
 
 
-        val options = arrayOf("","Agua","Energia","Internet","Apartamento")
+      //  val options = arrayOf("","Agua","Energia","Internet","Apartamento")
 
 
+
+        launch {
+            context?.let {
+                val listaBanco = ProductDatabase(it).getProductDao().getAllProducts()
+                lista = ListasUtilsJava.getInstance().listaDespesasOrdenadas(listaBanco)
+
+
+
+            }
+        }
+
+        ListasUtilsJava.getInstance().limparLista()
         sp_option.isEnabled = false
+        sp_option.visibility = View.INVISIBLE
 
         addSwitch_option.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 addSwitch_option.text = "Escolher"
                 edit_text_name.isEnabled = false
-                sp_option.isEnabled = true
+                sp_option.visibility = View.VISIBLE
 
-                sp_option.adapter =
-                    context?.let {
-                        ArrayAdapter<String>(it,android.R.layout.simple_list_item_1,options)
-                    }
-
-
-                sp_option.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                    }
-
-                    override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View?,
-                        position: Int,
-                        id: Long
-                    ) {
-                        edit_text_name.setText(options.get(position))
-                        if(!sp_option.selectedItem.toString().equals("Agua")&&!sp_option.selectedItem.toString().equals("Energia")){
-                            edit_text_consumo.isEnabled = false
-                        }else{
-                            edit_text_consumo.isEnabled = true
-                        }
-
-                    }
-                }
+                setSpinner()
 
             }else{
                 addSwitch_option.text = "Digitar"
                 edit_text_name.isEnabled = true
                 edit_text_name.requestFocus()
+                edit_text_name.setText("")
+                edit_text_consumo.isEnabled = false
                 sp_option.isEnabled = false
+                sp_option.visibility = View.INVISIBLE
+
             }
         }
 
 
 
+    }
+
+    private fun setSpinner() {
+        sp_option.isEnabled = true
+
+
+
+
+        sp_option.adapter =
+            context?.let {
+                ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, lista)
+            }
+
+
+
+        sp_option.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                edit_text_name.setText(lista.get(position))
+                if (!sp_option.selectedItem.toString()
+                        .equals("Agua") && !sp_option.selectedItem.toString()
+                        .equals("Energia")
+                ) {
+                    edit_text_consumo.isEnabled = false
+                } else {
+                    edit_text_consumo.isEnabled = true
+                }
+
+            }
+        }
     }
 
     fun setMask(editText: EditText, type: String){
