@@ -12,7 +12,7 @@ data class Product(
     val consumer: String,
     val valor: String
 
-):Serializable{
+) : Serializable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }

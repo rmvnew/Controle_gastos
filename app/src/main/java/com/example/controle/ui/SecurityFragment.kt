@@ -1,7 +1,6 @@
 package com.example.controle.ui
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,12 +14,10 @@ import android.widget.Toast
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.navigation.Navigation
 
 import com.example.controle.R
 import com.example.controle.animation.Effects
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_security.*
 
 /**
@@ -83,8 +80,8 @@ class SecurityFragment : BaseFragment() {
             finger.visibility = View.INVISIBLE
         }
 
-        btn_entrar.setOnClickListener {
-            Effects.clickEffect(btn_entrar, context!!)
+        btn_salvar.setOnClickListener {
+            Effects.clickEffect(btn_salvar, context!!)
 
             if (txt_password.text.toString().equals(ns.toString())) {
                 goToHomeActivity()

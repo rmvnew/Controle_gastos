@@ -1,5 +1,6 @@
 package com.example.controle.util;
 
+import com.example.controle.model.ListExpenses;
 import com.example.controle.model.Product;
 
 import java.text.SimpleDateFormat;
@@ -15,7 +16,7 @@ public class ListasUtilsJava {
 
     private List<String> listaNova = new ArrayList<>();
     private Set<String> listaunica = new HashSet<>();
-    private List<Product> listaRecebida = new ArrayList<>();
+    private List<ListExpenses> listaRecebida = new ArrayList<>();
 
     public ListasUtilsJava() {
 
@@ -31,19 +32,19 @@ public class ListasUtilsJava {
     }
 
 
-    public List<String> listaDespesasOrdenadas(List<Product> lista) {
+    public List<String> listaDespesasOrdenadas(List<ListExpenses> lista) {
 
         this.listaRecebida = lista;
 
         listaunica.add("Agua");
         listaunica.add("Energia");
         listaunica.add("Internet");
-        listaunica.add("Apartamento");
 
-        for (Product item : listaRecebida) {
-            if(getCurrentYear() == getYear(item.getData())) {
+
+        for (ListExpenses item : listaRecebida) {
+
                 listaunica.add(item.getNome());
-            }
+
         }
 
         for (String item : listaunica) {

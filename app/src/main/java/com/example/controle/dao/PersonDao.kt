@@ -11,7 +11,7 @@ interface PersonDao {
     suspend fun addPerson(person: Person)
 
     @Query("SELECT * FROM Person ORDER BY id DESC")
-    suspend fun getAllPersons():List<Person>
+    suspend fun getAllPersons(): List<Person>
 
     @Insert
     suspend fun addMultplePerson(vararg person: Person)
@@ -21,7 +21,6 @@ interface PersonDao {
 
     @Delete
     suspend fun deletePerson(person: Person)
-
 
 
 }

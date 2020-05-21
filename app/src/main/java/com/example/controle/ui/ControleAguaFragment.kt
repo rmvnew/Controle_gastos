@@ -65,7 +65,6 @@ class ControleAguaFragment : BaseFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun listaDeAnos() {
 
-        Toast.makeText(context, "Teste", Toast.LENGTH_LONG).show()
 
         var lista: List<Product> = ArrayList<Product>()
         var listaEscolhida: List<Product> = ArrayList<Product>()

@@ -10,13 +10,13 @@ interface ProductDao {
     suspend fun addProduct(prod: Product)
 
     @Query("SELECT * FROM product ORDER BY id DESC")
-    suspend fun getAllProducts():List<Product>
+    suspend fun getAllProducts(): List<Product>
 
     @Query("SELECT * FROM product ORDER BY id DESC")
-    fun getAll():List<Product>
+    fun getAll(): List<Product>
 
     @Query("SELECT * FROM product")
-    fun getAllExpenses():List<Product>
+    fun getAllExpenses(): List<Product>
 
     @Insert
     suspend fun addMultpleProducts(vararg prod: Product)
@@ -26,7 +26,6 @@ interface ProductDao {
 
     @Delete
     suspend fun deleteProduct(prod: Product)
-
 
 
 }

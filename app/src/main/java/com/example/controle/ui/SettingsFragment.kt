@@ -40,7 +40,7 @@ class SettingsFragment : BaseFragment() {
 
         generalStatus(share)
 
-        getStatus()
+        getStatus(share)
 
     }
 
@@ -114,9 +114,8 @@ class SettingsFragment : BaseFragment() {
 
     }
 
-    private fun getStatus() {
+    private fun getStatus(share: SharedPreferences) {
 
-        val share = activity!!.getSharedPreferences("PREFERENCES", Context.MODE_PRIVATE)
         val seg = share.getBoolean("SEGURANÇA", false)
         val sen = share.getBoolean("CB_SENHA", false)
         val bio = share.getBoolean("CB_BIOMETRIA", false)

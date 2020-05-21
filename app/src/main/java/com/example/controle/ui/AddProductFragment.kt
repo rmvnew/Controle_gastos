@@ -3,20 +3,22 @@ package com.example.controle.ui
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.view.*
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
+import com.example.controle.model.ListExpenses
 import com.example.controle.model.Product
 import com.example.controle.util.ListasUtilsJava
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
@@ -32,12 +34,13 @@ import kotlin.collections.ArrayList
 class AddProductFragment : BaseFragment() {
 
 
-    private var product:Product? = null
-    val cal = Calendar.getInstance()
-    val ano = cal.get(Calendar.YEAR)
-    val mes = cal.get(Calendar.MONTH)
-    val dia = cal.get(Calendar.DAY_OF_MONTH)
-    var lista:List<String> = ArrayList<String>()
+    private var product: Product? = null
+    private val cal = Calendar.getInstance()
+    private val ano = cal.get(Calendar.YEAR)
+    private val mes = cal.get(Calendar.MONTH)
+    private val dia = cal.get(Calendar.DAY_OF_MONTH)
+    private var lista: List<String> = ArrayList<String>()
+    private var SALVAR_ITEM_LISTA = true
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -55,10 +58,17 @@ class AddProductFragment : BaseFragment() {
         return currentContext
     }
 
-    fun pick(context: Context){
-        val datePickerDialog = DatePickerDialog(context,R.style.DialogTheme,DatePickerDialog.OnDateSetListener { it, ano, mes, dia ->
-            edit_text_data.setText("$dia/${mes.toInt()+1}/$ano")
-        },ano,mes,dia)
+    fun pick(context: Context) {
+        val datePickerDialog = DatePickerDialog(
+            context,
+            R.style.DialogTheme,
+            DatePickerDialog.OnDateSetListener { it, ano, mes, dia ->
+                edit_text_data.setText("$dia/${mes.toInt() + 1}/$ano")
+            },
+            ano,
+            mes,
+            dia
+        )
         datePickerDialog.show()
 
     }
@@ -69,11 +79,12 @@ class AddProductFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-
+        val share = activity!!.getSharedPreferences("ITEM_SAVE", Context.MODE_PRIVATE)
+        getStatus(share)
         edit_text_consumo.isEnabled = false
 
 
-        setMask(edit_text_data,"data")
+        setMask(edit_text_data, "data")
 
         arguments?.let {
             product = AddProductFragmentArgs.fromBundle(it).product
@@ -88,28 +99,29 @@ class AddProductFragment : BaseFragment() {
 
 
         btn_home_cad.setOnClickListener {
-            Effects.clickEffect(btn_home_cad,activity!!)
+            Effects.clickEffect(btn_home_cad, activity!!)
             val action = AddProductFragmentDirections.addToMain()
             Navigation.findNavController(it).navigate(action)
         }
 
 
-        btn_entrar.setOnClickListener { view ->
+        btn_salvar.setOnClickListener { view ->
 
-            Effects.clickEffect(btn_entrar,activity!!)
+            Effects.clickEffect(btn_salvar, activity!!)
+            val parametroConfirmado = share.getBoolean("SALVAR_PREFERENCIA",false)
 
             val prodName = edit_text_name.text.toString().trim()
             val prodData = edit_text_data.text.toString().trim()
             var prodConsumer = edit_text_consumo.text.toString().trim()
             val prodValor = edit_text_valor.text.toString().trim()
 
-            if(prodName.isEmpty()){
+            if (prodName.isEmpty()) {
                 edit_text_name.error = "Informe o nome do produto!!"
                 edit_text_name.requestFocus()
                 return@setOnClickListener
             }
 
-            if(prodConsumer.isEmpty()){
+            if (prodConsumer.isEmpty()) {
                 prodConsumer = "0"
             }
 
@@ -117,16 +129,26 @@ class AddProductFragment : BaseFragment() {
 
                 context?.let {
 
-                    val prod = Product(prodName,prodData,prodConsumer,prodValor)
+                    val prod = Product(prodName, prodData, prodConsumer, prodValor)
+                    val param = ListExpenses(prodName)
 
-                    if(product == null) {
+                    if (product == null) {
 
                         ProductDatabase(it).getProductDao().addProduct(prod)
+                        if(parametroConfirmado){
+                            //caso esteja habilitado salva o cadastro de despesa na lista de preferencia
+                            ProductDatabase(it).getListExpensesDao().addList(param)
+                            Toast.makeText(context,Html.fromHtml("<font color=#FFD700>Information</font><br>" +
+                                    "O item:${prodName.toString()}, foi adicionado a sua lista de preferencias"),Toast.LENGTH_LONG).show()
+                        }
                         it.toast("Produto salvo")
-                    }else{
+
+                    } else {
+
                         prod.id = product!!.id
                         ProductDatabase(it).getProductDao().updateProduct(prod)
                         it.toast("Produto atualizado")
+
                     }
 
 
@@ -141,42 +163,38 @@ class AddProductFragment : BaseFragment() {
 
 
         btn_remover.setOnClickListener {
-            if(product != null){
+            if (product != null) {
                 deleteProd()
-            }else{
-                Toast.makeText(context,"Não pode ser deletado",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Não pode ser deletado", Toast.LENGTH_SHORT).show()
             }
         }
 
-
-
-      //  val options = arrayOf("","Agua","Energia","Internet","Apartamento")
-
-
-
         launch {
             context?.let {
-                val listaBanco = ProductDatabase(it).getProductDao().getAllProducts()
+
+                val listaBanco = ProductDatabase(it).getListExpensesDao().getAllList()
                 lista = ListasUtilsJava.getInstance().listaDespesasOrdenadas(listaBanco)
-
-
 
             }
         }
 
         ListasUtilsJava.getInstance().limparLista()
+
+
         sp_option.isEnabled = false
         sp_option.visibility = View.INVISIBLE
 
         addSwitch_option.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
+            if (isChecked) {
                 addSwitch_option.text = "Escolher"
                 edit_text_name.isEnabled = false
                 sp_option.visibility = View.VISIBLE
-
+                sw_item_lista.visibility = View.INVISIBLE
                 setSpinner()
+                SALVAR_ITEM_LISTA = false
 
-            }else{
+            } else {
                 addSwitch_option.text = "Digitar"
                 edit_text_name.isEnabled = true
                 edit_text_name.requestFocus()
@@ -184,10 +202,38 @@ class AddProductFragment : BaseFragment() {
                 edit_text_consumo.isEnabled = false
                 sp_option.isEnabled = false
                 sp_option.visibility = View.INVISIBLE
+                sw_item_lista.visibility = View.VISIBLE
+                SALVAR_ITEM_LISTA = true //Sera?
 
             }
         }
 
+
+        sw_item_lista.setOnCheckedChangeListener { _, isChecked ->
+            val editor = share.edit()
+            if (isChecked && SALVAR_ITEM_LISTA) {
+                editor.putBoolean("SALVAR_PREFERENCIA", true)
+                editor.apply()
+                Toast.makeText(
+                    context, Html.fromHtml(
+                        "<h3><font color=#4682B4><b>Preferência modificada:</b></font></h3><br>" +
+                                "<h6>Agora os items que você cadastrar serão " +
+                                "salvos na lista.</h6>"
+                    ), Toast.LENGTH_LONG
+                ).show()
+            } else {
+                editor.putBoolean("SALVAR_PREFERENCIA", false)
+                editor.apply()
+
+                Toast.makeText(
+                    context, Html.fromHtml(
+                        "<h3><font color=#4682B4><b><font size=6>Preferência modificada:</b></font></h3><br>" +
+                                "<h6>Agora os items que você cadastrar <font color=#FF0000><b>não</b></font> serão " +
+                                "salvos na lista.</h6>"
+                    ), Toast.LENGTH_LONG
+                ).show()
+            }
+        }
 
 
     }
@@ -230,28 +276,28 @@ class AddProductFragment : BaseFragment() {
         }
     }
 
-    fun setMask(editText: EditText, type: String){
+    fun setMask(editText: EditText, type: String) {
         var typeText = ""
-        when(type){
+        when (type) {
             "cpf" -> typeText = "NNN.NNN.NNN-NN"
             "data" -> typeText = "NN/NN/NNNN"
             "telefone" -> typeText = "(NN) NNNNN-NNNN"
         }
 
         val smf = SimpleMaskFormatter(typeText)
-        val mtw = MaskTextWatcher(editText,smf)
+        val mtw = MaskTextWatcher(editText, smf)
         editText.addTextChangedListener(mtw)
 
 
     }
 
 
-    private fun deleteProd(){
+    private fun deleteProd() {
 
         AlertDialog.Builder(context).apply {
             setTitle("Deletar este produto?")
             setMessage("Esta operação irá apagar este registro.")
-            setPositiveButton("Sim"){_,_ ->
+            setPositiveButton("Sim") { _, _ ->
                 launch {
                     ProductDatabase(context).getProductDao().deleteProduct(product!!)
                     val action = AddProductFragmentDirections.actionSaveProduct()
@@ -260,7 +306,7 @@ class AddProductFragment : BaseFragment() {
                 }
             }
 
-            setNegativeButton("Não"){_,_ ->
+            setNegativeButton("Não") { _, _ ->
 
             }
         }.create().show()
@@ -272,7 +318,7 @@ class AddProductFragment : BaseFragment() {
 
         AjudaFragment.setNumber(3)
 
-        when(item.itemId){
+        when (item.itemId) {
             R.id.men_ajuda -> findNavController().navigate(R.id.actionAddDispesasToAjuda)
         }
         return super.onOptionsItemSelected(item)
@@ -280,7 +326,17 @@ class AddProductFragment : BaseFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu,menu)
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+
+    fun getStatus(share: SharedPreferences) {
+        val option = share.getBoolean("SALVAR_PREFERENCIA", false)
+        if (option == true) {
+            sw_item_lista.isChecked = true
+        } else {
+            sw_item_lista.isChecked = false
+        }
     }
 
 }
