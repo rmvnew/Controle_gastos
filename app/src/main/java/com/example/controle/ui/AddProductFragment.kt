@@ -1,12 +1,15 @@
 package com.example.controle.ui
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.text.Html
 import android.view.*
 import android.widget.*
@@ -25,6 +28,7 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -41,6 +45,7 @@ class AddProductFragment : BaseFragment() {
     private val dia = cal.get(Calendar.DAY_OF_MONTH)
     private var lista: List<String> = ArrayList<String>()
     private var SALVAR_ITEM_LISTA = true
+    private val REQUEST_CODE_SPEECH_INPUT = 100
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -49,13 +54,13 @@ class AddProductFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val currentContext = inflater.inflate(R.layout.fragment_add_product, container, false)
+
 
         (activity as MainActivity).supportActionBar?.setTitle("Cadastro de despesas")
 
         setHasOptionsMenu(true)
 
-        return currentContext
+        return inflater.inflate(R.layout.fragment_add_product, container, false)
     }
 
     fun pick(context: Context) {
@@ -193,6 +198,7 @@ class AddProductFragment : BaseFragment() {
                 sw_item_lista.visibility = View.INVISIBLE
                 setSpinner()
                 SALVAR_ITEM_LISTA = false
+                btn_mic.visibility = View.INVISIBLE
 
             } else {
                 addSwitch_option.text = "Digitar"
@@ -204,6 +210,7 @@ class AddProductFragment : BaseFragment() {
                 sp_option.visibility = View.INVISIBLE
                 sw_item_lista.visibility = View.VISIBLE
                 SALVAR_ITEM_LISTA = true //Sera?
+                btn_mic.visibility = View.VISIBLE
 
             }
         }
@@ -236,6 +243,44 @@ class AddProductFragment : BaseFragment() {
         }
 
 
+        btn_mic.setOnClickListener {
+            speak()
+        }
+
+
+    }
+
+    private fun speak(){
+        val mIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        mIntent.putExtra(
+            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        mIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,Locale.getDefault())
+        mIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Olá fale alguma coisa!")
+
+        try {
+            startActivityForResult(mIntent,REQUEST_CODE_SPEECH_INPUT)
+        }catch(ex: Exception){
+            Toast.makeText(requireContext(),ex.message,Toast.LENGTH_SHORT).show()
+        }
+
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode){
+
+            REQUEST_CODE_SPEECH_INPUT ->{
+                if(resultCode == Activity.RESULT_OK && null != data){
+                    val result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+                    edit_text_name.setText(result[0])
+                    edit_text_data.requestFocus()
+                }
+            }
+        }
+
     }
 
     private fun setSpinner() {
@@ -263,14 +308,7 @@ class AddProductFragment : BaseFragment() {
                 id: Long
             ) {
                 edit_text_name.setText(lista.get(position))
-                if (!sp_option.selectedItem.toString()
-                        .equals("Agua") && !sp_option.selectedItem.toString()
-                        .equals("Energia")
-                ) {
-                    edit_text_consumo.isEnabled = false
-                } else {
-                    edit_text_consumo.isEnabled = true
-                }
+                edit_text_consumo.isEnabled = !(sp_option.selectedItem.toString() != "Agua" && sp_option.selectedItem.toString() != "Energia")
 
             }
         }
@@ -290,7 +328,6 @@ class AddProductFragment : BaseFragment() {
 
 
     }
-
 
     private fun deleteProd() {
 
@@ -332,11 +369,7 @@ class AddProductFragment : BaseFragment() {
 
     fun getStatus(share: SharedPreferences) {
         val option = share.getBoolean("SALVAR_PREFERENCIA", false)
-        if (option == true) {
-            sw_item_lista.isChecked = true
-        } else {
-            sw_item_lista.isChecked = false
-        }
+        sw_item_lista.isChecked = option == true
     }
 
 }
