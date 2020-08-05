@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_despesas">
+        app:layout_constraintTop_toBottomOf="@+id/btn_OnusFixo">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -52,8 +52,9 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="700dp"
+                android:layout_width="600dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="15dp"
                 app:cardBackgroundColor="@android:color/white"
                 app:cardCornerRadius="5dp">
@@ -89,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:textSize="10sp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
         android:text="Historico"
         app:icon="@drawable/ic_history"
@@ -104,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:textSize="10sp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
         android:text="Consumo"
         app:icon="@drawable/ic_tonality"
@@ -119,6 +122,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:textSize="10sp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
         android:text="usuário"
         app:icon="@drawable/ic_person_add_black_24dp"
@@ -135,13 +139,45 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:textSize="10sp"
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-        android:text="despesas"
-        app:icon="@drawable/ic_monetization_on_black_24dp"
+        android:text="despesas Avulsas"
+        app:icon="@drawable/ic_baseline_arrow_white"
         app:layout_constraintEnd_toStartOf="@+id/btn_historico"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_usuario" />
+
+
+    <Button
+        android:id="@+id/btn_OnusFixo"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="10sp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="despesas Fixas"
+        app:icon="@drawable/ic_baseline_arrow_white"
+        app:layout_constraintEnd_toEndOf="@+id/btn_despesas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_despesas" />
+
+    <Button
+        android:id="@+id/btn_list_fixed_expenses"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/AZUL_STEEL_BLUE2"
+        android:text="lista de despesas"
+        android:textSize="10sp"
+        app:icon="@drawable/ic_view_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_historico"
+        app:layout_constraintTop_toBottomOf="@+id/btn_historico" />
 
     <TextView
         android:id="@+id/textView"

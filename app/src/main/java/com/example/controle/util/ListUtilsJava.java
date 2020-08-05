@@ -1,7 +1,6 @@
 package com.example.controle.util;
 
 import com.example.controle.model.ListExpenses;
-import com.example.controle.model.Product;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,21 +11,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ListasUtilsJava {
+public class ListUtilsJava {
 
     private List<String> listaNova = new ArrayList<>();
     private Set<String> listaunica = new HashSet<>();
     private List<ListExpenses> listaRecebida = new ArrayList<>();
 
-    public ListasUtilsJava() {
+    public ListUtilsJava() {
 
     }
 
-    private static ListasUtilsJava listas;
+    private static ListUtilsJava listas;
 
-    public static ListasUtilsJava getInstance() {
+    public static ListUtilsJava getInstance() {
         if (listas == null) {
-            listas = new ListasUtilsJava();
+            listas = new ListUtilsJava();
         }
         return listas;
     }

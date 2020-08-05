@@ -120,6 +120,19 @@ class MainFragment : BaseFragment() {
         }
 
 
+        btn_OnusFixo.setOnClickListener {
+            Effects.clickEffect(btn_OnusFixo, activity!!)
+            val action = MainFragmentDirections.actionMainToAddRegistro()
+            Navigation.findNavController(it).navigate(action)
+
+        }
+
+        btn_list_fixed_expenses.setOnClickListener {
+            Effects.clickEffect(btn_list_fixed_expenses, activity!!)
+            val action = MainFragmentDirections.actionMainToListFixedExpenses()
+            Navigation.findNavController(it).navigate(action)
+        }
+
 
         listaDeAnos()
 

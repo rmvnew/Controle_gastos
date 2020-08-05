@@ -63,9 +63,7 @@ class AddPersonFragment : BaseFragment() {
             txtNascimento.setText(person?.dataNascimento)
             txtTelefone.setText(person?.telefone)
             txtEmail.setText(person?.email)
-            txtAgua.setText(person?.agua)
-            txtEnergia.setText(person?.energia)
-            txtApartamento.setText(person?.apartamento)
+
 
         }
 
@@ -104,9 +102,7 @@ class AddPersonFragment : BaseFragment() {
             val personData = txtNascimento.text.toString().trim()
             val personTelefone = txtTelefone.text.toString().trim()
             val personEmail = txtEmail.text.toString().trim()
-            val personAgua = txtAgua.text.toString().trim()
-            val personEnergia = txtEnergia.text.toString().trim()
-            val personApartamento = txtApartamento.text.toString().trim()
+
 
 
             if(personNome.isEmpty()){
@@ -122,10 +118,8 @@ class AddPersonFragment : BaseFragment() {
                         personCpf,
                         personData,
                         personTelefone,
-                        personEmail,
-                        personAgua,
-                        personEnergia,
-                        personApartamento
+                        personEmail
+
                     )
 
                     if(person == null){

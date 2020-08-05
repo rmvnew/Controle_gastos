@@ -6,7 +6,6 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -14,7 +13,6 @@ import android.text.Html
 import android.view.*
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -23,7 +21,7 @@ import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.ListExpenses
 import com.example.controle.model.Product
-import com.example.controle.util.ListasUtilsJava
+import com.example.controle.util.ListUtilsJava
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
@@ -179,12 +177,12 @@ class AddProductFragment : BaseFragment() {
             context?.let {
 
                 val listaBanco = ProductDatabase(it).getListExpensesDao().getAllList()
-                lista = ListasUtilsJava.getInstance().listaDespesasOrdenadas(listaBanco)
+                lista = ListUtilsJava.getInstance().listaDespesasOrdenadas(listaBanco)
 
             }
         }
 
-        ListasUtilsJava.getInstance().limparLista()
+        ListUtilsJava.getInstance().limparLista()
 
 
         sp_option.isEnabled = false

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ListaUsuarioFragment">
+    tools:context=".ui.ListOfFixedExpensesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewLista"
+        android:id="@+id/recyclerView_fixed_expenses"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_home_lista_usuarios"
+        android:id="@+id/btn_home_list_fixed_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add_lista_usuarios"
+        android:id="@+id/btn_add_fixed_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -40,6 +40,8 @@
         android:backgroundTint="@color/AZUL_STEEL_BLUE2"
         android:clickable="true"
         android:src="@drawable/ic_add_white"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewLista"
-        app:layout_constraintStart_toEndOf="@+id/btn_home_lista_usuarios" />
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView_fixed_expenses"
+        app:layout_constraintStart_toEndOf="@+id/btn_home_list_fixed_expenses" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DadosUsuarioFragment">
+    tools:context=".ui.UserDataFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_fab_home_dados"
@@ -214,105 +214,6 @@
                 style="@style/Widget.MaterialComponents.Button.Icon"
                 android:text="copiar"
                 app:layout_constraintBaseline_toBaselineOf="@+id/txt_dados_email"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Matricula Água:"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_dados_email" />
-
-            <TextView
-                android:id="@+id/txt_dados_agua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:text="Matricula água usuário"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView24" />
-
-            <Button
-                android:id="@+id/btn_copy_dados_agua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-                app:icon="@drawable/ic_vpn_lock"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:text="copiar"
-                app:layout_constraintBaseline_toBaselineOf="@+id/txt_dados_agua"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Unidade Consumidora Energia:"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_dados_agua" />
-
-            <TextView
-                android:id="@+id/txt_dados_energia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:text="Unidade consumidora do usuário"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-            <Button
-                android:id="@+id/btn_copy_dados_energia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-                app:icon="@drawable/ic_vpn_lock"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:text="copiar"
-                app:layout_constraintBaseline_toBaselineOf="@+id/txt_dados_energia"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/textView28"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Contrato apartamento:"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_dados_energia" />
-
-            <TextView
-                android:id="@+id/txt_dados_apartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:text="Contrato do usuário"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
-            <Button
-                android:id="@+id/btn_copy_dados_apartamento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/AZUL_STEEL_BLUE2"
-                app:icon="@drawable/ic_vpn_lock"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:text="copiar"
-                app:layout_constraintBaseline_toBaselineOf="@+id/txt_dados_apartamento"
                 app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

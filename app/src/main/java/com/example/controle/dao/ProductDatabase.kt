@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.controle.model.FixedExpenses
 import com.example.controle.model.ListExpenses
 import com.example.controle.model.Person
 import com.example.controle.model.Product
@@ -12,14 +13,16 @@ import com.example.controle.model.Product
     entities = [
         Product::class,
         Person::class,
-        ListExpenses::class
-    ], version = 7
+        ListExpenses::class,
+        FixedExpenses::class
+    ], version = 8
 )
 abstract class ProductDatabase : RoomDatabase() {
 
     abstract fun getProductDao(): ProductDao
     abstract fun getPersonDao(): PersonDao
     abstract fun getListExpensesDao(): ListExpensesDao
+    abstract fun getFixedExpenses(): FixedExpensesDao
 
     companion object {
         @Volatile

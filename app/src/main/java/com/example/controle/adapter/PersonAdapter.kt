@@ -8,10 +8,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.controle.R
 import com.example.controle.model.Person
-import com.example.controle.ui.DadosUsuarioFragmentDirections
-import com.example.controle.ui.HomeFragmentDirections
-import com.example.controle.ui.ListaUsuarioFragment
-import com.example.controle.ui.ListaUsuarioFragmentDirections
+import com.example.controle.ui.UserListFragmentDirections
+
 import kotlinx.android.synthetic.main.person_layout.view.*
 
 class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
@@ -37,9 +35,7 @@ class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<Person
         holder.view.txtViewData.text = pers[position].dataNascimento
         holder.view.txtViewTelefone.text = pers[position].telefone
         holder.view.txtViewEmail.text = pers[position].email
-        holder.view.txtViewAgua.text = pers[position].agua
-        holder.view.txtViewEnergia.text = pers[position].energia
-        holder.view.txtViewApartamento.text = pers[position].apartamento
+
 
 
 
@@ -50,7 +46,7 @@ class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<Person
                 setMessage("Usar esses dados ou editar?")
                 setPositiveButton("Usar"){_,_ ->
 
-                    val action = ListaUsuarioFragmentDirections.actionListaUsuariosToDadosUsuarios()
+                    val action = UserListFragmentDirections.actionListaUsuariosToDadosUsuarios()
                     action.person = pers[position]
                     Navigation.findNavController(view).navigate(action)
 
@@ -59,7 +55,7 @@ class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<Person
                 setNegativeButton("Editar"){_,_ ->
 
 
-                   val action = ListaUsuarioFragmentDirections.actionListaPersonToAddPerson()
+                   val action = UserListFragmentDirections.actionListaPersonToAddPerson()
                    action.person = pers[position]
                    Navigation.findNavController(view).navigate(action)
 

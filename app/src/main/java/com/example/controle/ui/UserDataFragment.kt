@@ -3,8 +3,6 @@ package com.example.controle.ui
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -15,12 +13,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.model.Person
-import kotlinx.android.synthetic.main.fragment_dados_usuario.*
+import kotlinx.android.synthetic.main.fragment_data_user.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class DadosUsuarioFragment : BaseFragment() {
+class UserDataFragment : BaseFragment() {
 
     private var person:Person? = null
 
@@ -34,7 +32,7 @@ class DadosUsuarioFragment : BaseFragment() {
 
         (activity as MainActivity).supportActionBar?.setTitle("Dados do usuário")
 
-        return inflater.inflate(R.layout.fragment_dados_usuario, container, false)
+        return inflater.inflate(R.layout.fragment_data_user, container, false)
     }
 
 
@@ -42,27 +40,24 @@ class DadosUsuarioFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
         arguments?.let {
-            person = DadosUsuarioFragmentArgs.fromBundle(it).person
+            person = UserDataFragmentArgs.fromBundle(it).person
 
             txt_dados_nome.setText(person?.nome)
             txt_dados_cpf.setText(person?.cpf)
             txt_dados_data.setText(person?.dataNascimento)
             txt_dados_telefone.setText(person?.telefone)
             txt_dados_email.setText(person?.email)
-            txt_dados_agua.setText(person?.agua)
-            txt_dados_energia.setText(person?.energia)
-            txt_dados_apartamento.setText(person?.apartamento)
 
         }
 
 
         btn_fab_home_dados.setOnClickListener {
-            val action = DadosUsuarioFragmentDirections.actionsDadosUsuariosToMain()
+            val action = UserDataFragmentDirections.actionsDadosUsuariosToMain()
             Navigation.findNavController(it).navigate(action)
         }
 
         btn_fab_lista_dados.setOnClickListener {
-            val action = DadosUsuarioFragmentDirections.actionDadosUsuariosToListaUsuarios()
+            val action = UserDataFragmentDirections.actionDadosUsuariosToListaUsuarios()
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -132,53 +127,9 @@ class DadosUsuarioFragment : BaseFragment() {
             }
         }
 
-        btn_copy_dados_agua.setOnClickListener {
-            if(!txt_dados_agua.text.isEmpty()){
 
-                val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("text", txt_dados_agua.text.toString().trim())
-                clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,"Copiado:\n"+txt_dados_agua.text,Toast.LENGTH_SHORT).show()
 
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.aguasdemanaus.com.br/"))
-                startActivity(intent)
 
-                Effects.clickEffect(btn_copy_dados_agua,activity!!)
-
-            }
-        }
-
-        btn_copy_dados_energia.setOnClickListener {
-            if(!txt_dados_energia.text.isEmpty()){
-
-                val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("text", txt_dados_energia.text.toString().trim())
-                clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,"Copiado:\n"+txt_dados_energia.text,Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.eletrobrasamazonas.com/agenciavirtual/login"))
-                startActivity(intent)
-
-                Effects.clickEffect(btn_copy_dados_energia,activity!!)
-
-            }
-        }
-
-        btn_copy_dados_apartamento.setOnClickListener {
-            if(!txt_dados_apartamento.text.isEmpty()){
-
-                val clipboardManager = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("text", txt_dados_apartamento.text.toString().trim())
-                clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(context,"Copiado:\n"+txt_dados_apartamento.text,Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www1.caixa.gov.br/servico/habitacao/"))
-                startActivity(intent)
-
-                Effects.clickEffect(btn_copy_dados_apartamento,activity!!)
-
-            }
-        }
 
 
 

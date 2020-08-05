@@ -2,14 +2,12 @@ package com.example.controle.ui
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.LinearLayout
-import android.widget.SpinnerAdapter
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-
 import com.example.controle.R
 import com.example.controle.adapter.ProductsAdapter
 import com.example.controle.dao.ProductDatabase
@@ -61,6 +59,8 @@ class HomeFragment : BaseFragment() {
             val action = HomeFragmentDirections.listaToMain()
             Navigation.findNavController(it).navigate(action)
         }
+
+
 
     }
 

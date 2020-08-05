@@ -11,10 +11,7 @@ data class Person(
     val cpf: String,
     val dataNascimento: String,
     val telefone: String,
-    val email: String,
-    val agua: String,
-    val energia: String,
-    val apartamento: String
+    val email: String
 
 ) : Serializable {
     @PrimaryKey(autoGenerate = true)

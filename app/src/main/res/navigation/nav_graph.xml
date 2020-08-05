@@ -45,6 +45,12 @@
         <action
             android:id="@+id/actionMainToPassword"
             app:destination="@id/newPasswordFragment" />
+        <action
+            android:id="@+id/actionMainToAddRegistro"
+            app:destination="@id/addFixedExpensesFragment" />
+        <action
+            android:id="@+id/actionMainToListFixedExpenses"
+            app:destination="@id/listOfFixedExpensesFragment" />
     </fragment>
 
 
@@ -119,9 +125,9 @@
     </fragment>
     <fragment
         android:id="@+id/listaUsuarioFragment"
-        android:name="com.example.controle.ui.ListaUsuarioFragment"
+        android:name="com.example.controle.ui.UserListFragment"
         android:label="fragment_lista_usuario"
-        tools:layout="@layout/fragment_lista_usuario" >
+        tools:layout="@layout/fragment_list_user" >
         <action
             android:id="@+id/actionListaPersonToAddPerson"
             app:destination="@id/addPersonFragment" />
@@ -137,9 +143,9 @@
     </fragment>
     <fragment
         android:id="@+id/dadosUsuarioFragment"
-        android:name="com.example.controle.ui.DadosUsuarioFragment"
+        android:name="com.example.controle.ui.UserDataFragment"
         android:label="fragment_dados_usuario"
-        tools:layout="@layout/fragment_dados_usuario" >
+        tools:layout="@layout/fragment_data_user" >
         <action
             android:id="@+id/actionDadosUsuariosToListaUsuarios"
             app:destination="@id/listaUsuarioFragment" />
@@ -165,6 +171,31 @@
         android:name="com.example.controle.ui.SettingsFragment"
         android:label="fragment_new_password"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/addFixedExpensesFragment"
+        android:name="com.example.controle.ui.AddFixedExpensesFragment"
+        android:label="fragment_add_fixed_expenses"
+        tools:layout="@layout/fragment_add_fixed_expenses" >
+        <action
+            android:id="@+id/action_addFixedExpensesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/actionAddToListExpenses"
+            app:destination="@id/listOfFixedExpensesFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/listOfFixedExpensesFragment"
+        android:name="com.example.controle.ui.ListOfFixedExpensesFragment"
+        android:label="fragment_list_of_fixed_expenses"
+        tools:layout="@layout/fragment_list_of_fixed_expenses" >
+        <action
+            android:id="@+id/actionListaExpensesToAdd"
+            app:destination="@id/addFixedExpensesFragment" />
+        <action
+            android:id="@+id/action_listOfFixedExpensesFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 
 </navigation>

@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.controle.R
 import com.example.controle.adapter.PersonAdapter
 import com.example.controle.dao.ProductDatabase
-import kotlinx.android.synthetic.main.fragment_lista_usuario.*
+import kotlinx.android.synthetic.main.fragment_list_user.*
 import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
  */
-class ListaUsuarioFragment : BaseFragment() {
+class UserListFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class ListaUsuarioFragment : BaseFragment() {
         setHasOptionsMenu(true)
 
         (activity as MainActivity).supportActionBar?.setTitle("Usuários cadastrados")
-        return inflater.inflate(R.layout.fragment_lista_usuario, container, false)
+        return inflater.inflate(R.layout.fragment_list_user, container, false)
     }
 
 
@@ -49,12 +49,12 @@ class ListaUsuarioFragment : BaseFragment() {
 
 
         btn_home_lista_usuarios.setOnClickListener {
-            val action = ListaUsuarioFragmentDirections.actionListaUsuariosToMain()
+            val action = UserListFragmentDirections.actionListaUsuariosToMain()
             Navigation.findNavController(it).navigate(action)
         }
 
         btn_add_lista_usuarios.setOnClickListener {
-            val action = ListaUsuarioFragmentDirections.actionListaPersonToAddPerson()
+            val action = UserListFragmentDirections.actionListaPersonToAddPerson()
             Navigation.findNavController(it).navigate(action)
         }
 
