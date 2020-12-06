@@ -1,4 +1,4 @@
-package com.example.controle.ui
+package com.example.controle.util
 
 import android.os.Bundle
 import android.widget.SpinnerAdapter

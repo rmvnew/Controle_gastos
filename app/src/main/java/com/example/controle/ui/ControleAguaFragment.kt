@@ -6,7 +6,6 @@ import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -14,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Product
+import com.example.controle.util.AjudaFragment
+import com.example.controle.util.BaseFragment
 import com.example.controle.util.DateUtils
 import com.example.controle.util.DateUtilsJava
 import com.github.mikephil.charting.data.Entry

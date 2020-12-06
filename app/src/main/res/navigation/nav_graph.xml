@@ -140,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/ajudaFragment"
-        android:name="com.example.controle.ui.AjudaFragment"
+        android:name="com.example.controle.util.AjudaFragment"
         android:label="fragment_ajuda"
         tools:layout="@layout/fragment_ajuda" />
     <fragment

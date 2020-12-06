@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.controle.R
+import com.example.controle.util.BaseFragment
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 

@@ -1,7 +1,6 @@
 package com.example.controle.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.controle.R
 import com.example.controle.adapter.FixedExpensesAdapter
 import com.example.controle.dao.ProductDatabase
+import com.example.controle.util.BaseFragment
 import kotlinx.android.synthetic.main.fragment_list_of_fixed_expenses.*
-import kotlinx.android.synthetic.main.fragment_list_user.*
 import kotlinx.coroutines.launch
 
 class ListOfFixedExpensesFragment : BaseFragment() {

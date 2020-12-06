@@ -21,6 +21,8 @@ import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.ListExpenses
 import com.example.controle.model.Product
+import com.example.controle.util.AjudaFragment
+import com.example.controle.util.BaseFragment
 import com.example.controle.util.ListUtilsJava
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher

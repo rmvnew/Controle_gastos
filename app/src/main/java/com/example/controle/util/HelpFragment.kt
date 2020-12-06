@@ -1,4 +1,4 @@
-package com.example.controle.ui
+package com.example.controle.util
 
 import android.Manifest
 import android.graphics.Color
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.controle.R
+import com.example.controle.ui.MainActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
