@@ -30,21 +30,10 @@ class OpenActivity : AppCompatActivity() {
         Effects.crescer(grafico,this)
         Effects.aparecerDebaixo(txt_versao,this)
 
-
-
-
-
         hand.postDelayed(Runnable {
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
             finish()
         },2000)
-
-
     }
-
-
-
-
-
 }

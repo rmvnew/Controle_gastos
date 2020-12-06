@@ -13,23 +13,15 @@ open class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.setDisplayShowHomeEnabled(true)
-
         val navController = Navigation.findNavController(this,R.id.fragment)
         NavigationUI.setupActionBarWithNavController(this,navController)
 
-
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(
                 Navigation.findNavController(this,R.id.fragment),
                 null
         )
-
     }
-
 }

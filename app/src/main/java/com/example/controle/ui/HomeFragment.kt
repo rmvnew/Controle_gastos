@@ -1,17 +1,17 @@
 package com.example.controle.ui
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.controle.R
 import com.example.controle.adapter.ProductsAdapter
 import com.example.controle.dao.ProductDatabase
-import com.example.controle.util.AjudaFragment
 import com.example.controle.util.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
@@ -61,26 +61,5 @@ class HomeFragment : BaseFragment() {
             val action = HomeFragmentDirections.listaToMain()
             Navigation.findNavController(it).navigate(action)
         }
-
-
-
     }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        AjudaFragment.setNumber(6)
-
-        when(item.itemId){
-            R.id.men_ajuda -> findNavController().navigate(R.id.actionHomeToAjuda)
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu,menu)
-    }
-
-
 }

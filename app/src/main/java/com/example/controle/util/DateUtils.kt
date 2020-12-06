@@ -213,26 +213,5 @@ class DateUtils() : BaseFragment(){
                 valorMeses[index] = 0.0
             }
         }
-
-
-
-        fun getYears():Array<String?>{
-
-
-
-            var listaDeAnos = arrayOfNulls<String>(100)
-
-            for(i in 0..99){
-                listaDeAnos[i] = (2001+i).toString()
-            }
-
-            return listaDeAnos
-        }
-
-
-
-
-
     }
-
 }

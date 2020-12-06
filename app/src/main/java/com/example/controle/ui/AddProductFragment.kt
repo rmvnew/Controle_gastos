@@ -15,20 +15,17 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.ListExpenses
 import com.example.controle.model.Product
-import com.example.controle.util.AjudaFragment
 import com.example.controle.util.BaseFragment
 import com.example.controle.util.ListUtilsJava
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -349,21 +346,6 @@ class AddProductFragment : BaseFragment() {
         }.create().show()
 
 
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        AjudaFragment.setNumber(3)
-
-        when (item.itemId) {
-            R.id.men_ajuda -> findNavController().navigate(R.id.actionAddDispesasToAjuda)
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
     }
 
 

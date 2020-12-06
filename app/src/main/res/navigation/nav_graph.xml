@@ -39,10 +39,6 @@
             app:destination="@id/listaUsuarioFragment"
             />
         <action
-            android:id="@+id/actionMainToAjuda"
-            app:destination="@id/ajudaFragment"
-            />
-        <action
             android:id="@+id/actionMainToPassword"
             app:destination="@id/newPasswordFragment" />
         <action
@@ -65,9 +61,6 @@
         <action
             android:id="@+id/listaToMain"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/actionHomeToAjuda"
-            app:destination="@id/ajudaFragment" />
     </fragment>
 
 
@@ -87,9 +80,6 @@
         <action
             android:id="@+id/addToMain"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/actionAddDispesasToAjuda"
-            app:destination="@id/ajudaFragment" />
     </fragment>
     <fragment
         android:id="@+id/controleAguaFragment"
@@ -99,9 +89,6 @@
         <action
             android:id="@+id/actionAguaToHome"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/actionControleConsumoToAjuda"
-            app:destination="@id/ajudaFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPersonFragment"
@@ -119,9 +106,6 @@
         <action
             android:id="@+id/actionAddPersonToLista"
             app:destination="@id/listaUsuarioFragment" />
-        <action
-            android:id="@+id/actionAddPersonToAjuda"
-            app:destination="@id/ajudaFragment" />
     </fragment>
     <fragment
         android:id="@+id/listaUsuarioFragment"
@@ -134,15 +118,7 @@
         <action
             android:id="@+id/actionListaUsuariosToMain"
             app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/actionListaUsuariosToAjuda"
-            app:destination="@id/ajudaFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/ajudaFragment"
-        android:name="com.example.controle.util.AjudaFragment"
-        android:label="fragment_ajuda"
-        tools:layout="@layout/fragment_ajuda" />
     <fragment
         android:id="@+id/newPasswordFragment"
         android:name="com.example.controle.ui.SettingsFragment"

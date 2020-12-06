@@ -2,18 +2,18 @@ package com.example.controle.ui
 
 import android.os.Build
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Product
-import com.example.controle.util.AjudaFragment
 import com.example.controle.util.BaseFragment
 import com.example.controle.util.DateUtils
 import com.example.controle.util.DateUtilsJava
@@ -161,24 +161,6 @@ class ControleAguaFragment : BaseFragment() {
 
             }
         }
-
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        AjudaFragment.setNumber(4)
-
-        when (item.itemId) {
-            R.id.men_ajuda -> findNavController().navigate(R.id.actionControleConsumoToAjuda)
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
-    }
-
-
 }
 

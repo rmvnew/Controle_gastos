@@ -4,32 +4,27 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
-import com.example.controle.util.DateUtils
-import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.coroutines.launch
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.view.*
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.navigation.fragment.findNavController
 import com.example.controle.model.Product
-import com.example.controle.util.AjudaFragment
 import com.example.controle.util.BaseFragment
+import com.example.controle.util.DateUtils
 import com.example.controle.util.DateUtilsJava
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.utils.ColorTemplate
-import java.util.*
-import kotlin.collections.ArrayList
+import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.launch
 
 
 /**
@@ -162,24 +157,6 @@ class MainFragment : BaseFragment() {
 
             }
         }
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-
-        AjudaFragment.setNumber(0)
-
-        when (item.itemId) {
-            R.id.men_ajuda -> findNavController().navigate(R.id.actionMainToAjuda)
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
     }
 
 

@@ -4,18 +4,17 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Person
-import com.example.controle.util.AjudaFragment
 import com.example.controle.util.BaseFragment
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
@@ -68,17 +67,6 @@ class AddPersonFragment : BaseFragment() {
 
 
         }
-
-
-//        txtNascimento.setOnFocusChangeListener { v, hasFocus ->
-//            if(hasFocus) {
-//                pick(activity!!)
-//            }
-//        }
-
-//        txtNascimento.setOnClickListener {
-//            pick(activity!!)
-//        }
 
 
         btn_home_usuario.setOnClickListener {
@@ -188,25 +176,5 @@ class AddPersonFragment : BaseFragment() {
             }
         }.create().show()
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-
-        AjudaFragment.setNumber(2)
-
-        when(item.itemId){
-            R.id.men_ajuda -> findNavController().navigate(R.id.actionAddPersonToAjuda)
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu,menu)
-    }
-
-
-
 
 }

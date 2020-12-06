@@ -24,8 +24,4 @@ abstract class BaseFragment:Fragment(),CoroutineScope {
         super.onDestroy()
         job.cancel()
     }
-
-
-
-
 }
