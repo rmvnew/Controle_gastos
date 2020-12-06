@@ -135,30 +135,7 @@
             android:id="@+id/actionListaUsuariosToMain"
             app:destination="@id/mainFragment" />
         <action
-            android:id="@+id/actionListaUsuariosToDadosUsuarios"
-            app:destination="@id/dadosUsuarioFragment" />
-        <action
             android:id="@+id/actionListaUsuariosToAjuda"
-            app:destination="@id/ajudaFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/dadosUsuarioFragment"
-        android:name="com.example.controle.ui.UserDataFragment"
-        android:label="fragment_dados_usuario"
-        tools:layout="@layout/fragment_data_user" >
-        <action
-            android:id="@+id/actionDadosUsuariosToListaUsuarios"
-            app:destination="@id/listaUsuarioFragment" />
-        <action
-            android:id="@+id/actionsDadosUsuariosToMain"
-            app:destination="@id/mainFragment" />
-        <argument
-            android:name="Person"
-            app:argType="com.example.controle.model.Person"
-            app:nullable="true"
-            android:defaultValue="@null" />
-        <action
-            android:id="@+id/actionDadosUsuarioToAjuda"
             app:destination="@id/ajudaFragment" />
     </fragment>
     <fragment
