@@ -93,7 +93,7 @@ class DateUtils() : BaseFragment(){
                 "Ago" -> numeroMes = 7
                 "Set" -> numeroMes = 8
                 "Out" -> numeroMes = 9
-                "Nav" -> numeroMes = 10
+                "Nov" -> numeroMes = 10
                 "Dez" -> numeroMes = 11
             }
 

@@ -151,7 +151,7 @@ class MainFragment : BaseFragment() {
 
                 var dataset = BarDataSet(barEntries, "Despesas")
                 dataset.setColors(ColorTemplate.COLORFUL_COLORS)
-                dataset.valueTextSize = 10f
+                dataset.valueTextSize = 12f
                 val labels = listaMeses.map { Product -> Product.expenses }
 
                 val data = BarData(labels, dataset)
