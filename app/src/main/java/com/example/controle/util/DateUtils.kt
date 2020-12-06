@@ -1,15 +1,11 @@
 package com.example.controle.util
 
-import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.controle.model.Consumer
 import com.example.controle.model.Expenses
 import com.example.controle.model.Product
-import com.example.controle.ui.BaseFragment
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.math.absoluteValue
 
@@ -97,7 +93,7 @@ class DateUtils() : BaseFragment(){
                 "Ago" -> numeroMes = 7
                 "Set" -> numeroMes = 8
                 "Out" -> numeroMes = 9
-                "Nav" -> numeroMes = 10
+                "Nov" -> numeroMes = 10
                 "Dez" -> numeroMes = 11
             }
 

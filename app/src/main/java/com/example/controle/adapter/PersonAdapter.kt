@@ -46,9 +46,7 @@ class PersonAdapter(private val pers:List<Person>) : RecyclerView.Adapter<Person
                 setMessage("Usar esses dados ou editar?")
                 setPositiveButton("Usar"){_,_ ->
 
-                    val action = UserListFragmentDirections.actionListaUsuariosToDadosUsuarios()
-                    action.person = pers[position]
-                    Navigation.findNavController(view).navigate(action)
+
 
                 }
 

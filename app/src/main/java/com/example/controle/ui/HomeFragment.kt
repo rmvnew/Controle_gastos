@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.controle.R
 import com.example.controle.adapter.ProductsAdapter
 import com.example.controle.dao.ProductDatabase
+import com.example.controle.util.AjudaFragment
+import com.example.controle.util.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 

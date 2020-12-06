@@ -11,6 +11,7 @@ import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.FixedExpenses
+import com.example.controle.util.BaseFragment
 import kotlinx.android.synthetic.main.fragment_add_fixed_expenses.*
 import kotlinx.coroutines.launch
 

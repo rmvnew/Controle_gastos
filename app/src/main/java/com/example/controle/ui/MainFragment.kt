@@ -8,34 +8,22 @@ import android.os.Handler
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.anychart.AnyChart
-import com.anychart.AnyChartView
-import com.anychart.chart.common.dataentry.DataEntry
-import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.example.controle.R
 import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
-import com.example.controle.model.Expenses
 import com.example.controle.util.DateUtils
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.launch
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
-import android.content.Context.CLIPBOARD_SERVICE
-import android.content.Intent
-import android.net.Uri
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.example.controle.model.Product
+import com.example.controle.util.AjudaFragment
+import com.example.controle.util.BaseFragment
 import com.example.controle.util.DateUtilsJava
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -49,93 +37,60 @@ import kotlin.collections.ArrayList
  */
 class MainFragment : BaseFragment() {
 
-    val handler = Handler()
-    private var myClipboard: ClipboardManager? = null
-    private var myClip: ClipData? = null
-    var listaNova: List<String> = listOf()
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
         setHasOptionsMenu(true)
-
-        val currentContext = inflater.inflate(R.layout.fragment_main, container, false)
-
-
-
 
         (activity as MainActivity).supportActionBar?.setTitle("Principal")
         (activity as MainActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.DKGRAY))
 
-
-        return currentContext
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
         btn_usuario.setOnClickListener {
             Effects.clickEffect(btn_usuario, activity!!)
-            val action = MainFragmentDirections.actionHomeToUsuariosCadastrados()
-            Navigation.findNavController(it).navigate(action)
+            findNavController().navigate(R.id.actionHomeToUsuariosCadastrados)
         }
-
-
 
         btn_historico.setOnClickListener {
             Effects.clickEffect(btn_historico, activity!!)
-            val action = MainFragmentDirections.actionMainToList()
-            Navigation.findNavController(it).navigate(action)
+            findNavController().navigate(R.id.actionMainToList)
         }
 
         btn_despesas.setOnClickListener {
             Effects.clickEffect(btn_despesas, activity!!)
-
-            val action = MainFragmentDirections.actionMainToAdd()
-            Navigation.findNavController(it).navigate(action)
-
+            findNavController().navigate(R.id.actionMainToAdd)
         }
 
         btn_consumo.setOnClickListener {
             Effects.clickEffect(btn_consumo, activity!!)
-            val action = MainFragmentDirections.actionHomeToAgua()
-            Navigation.findNavController(it).navigate(action)
-
+            findNavController().navigate(R.id.actionHomeToAgua)
         }
-
 
         btn_fab_settings.setOnClickListener {
             Effects.clickEffect(btn_fab_settings, activity!!)
-            val action = MainFragmentDirections.actionMainToPassword()
-            Navigation.findNavController(it).navigate(action)
+            findNavController().navigate(R.id.actionMainToPassword)
         }
-
 
         btn_OnusFixo.setOnClickListener {
             Effects.clickEffect(btn_OnusFixo, activity!!)
-            val action = MainFragmentDirections.actionMainToAddRegistro()
-            Navigation.findNavController(it).navigate(action)
-
+            findNavController().navigate(R.id.actionMainToAddRegistro)
         }
 
         btn_list_fixed_expenses.setOnClickListener {
             Effects.clickEffect(btn_list_fixed_expenses, activity!!)
-            val action = MainFragmentDirections.actionMainToListFixedExpenses()
-            Navigation.findNavController(it).navigate(action)
+            findNavController().navigate(R.id.actionMainToListFixedExpenses)
         }
 
-
         listaDeAnos()
-
 
     }
 
@@ -153,7 +108,6 @@ class MainFragment : BaseFragment() {
         spinnerMain.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
-
             }
 
             @RequiresApi(Build.VERSION_CODES.O)
@@ -164,16 +118,12 @@ class MainFragment : BaseFragment() {
                 id: Long
             ) {
 
-
                 val valor = spinnerMain.selectedItem.toString()
 
                 setupPieChart(valor)
 
-
             }
         }
-
-
     }
 
 
@@ -201,7 +151,7 @@ class MainFragment : BaseFragment() {
 
                 var dataset = BarDataSet(barEntries, "Despesas")
                 dataset.setColors(ColorTemplate.COLORFUL_COLORS)
-                dataset.valueTextSize = 10f
+                dataset.valueTextSize = 12f
                 val labels = listaMeses.map { Product -> Product.expenses }
 
                 val data = BarData(labels, dataset)
@@ -212,7 +162,6 @@ class MainFragment : BaseFragment() {
 
             }
         }
-
     }
 
 
@@ -253,11 +202,7 @@ class MainFragment : BaseFragment() {
                     listaRecebida.sort()
                     setSpinner(listaRecebida)
                 }
-
             }
         }
-
-
     }
-
 }

@@ -18,6 +18,7 @@ import androidx.navigation.Navigation
 
 import com.example.controle.R
 import com.example.controle.animation.Effects
+import com.example.controle.util.BaseFragment
 import kotlinx.android.synthetic.main.fragment_security.*
 
 /**
