@@ -1,4 +1,4 @@
-package com.example.controle.ui
+package com.example.controle.ui.addproduct
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -20,6 +20,7 @@ import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.ListExpenses
 import com.example.controle.model.Product
+import com.example.controle.ui.MainActivity
 import com.example.controle.util.BaseFragment
 import com.example.controle.util.ListUtilsJava
 import com.example.controle.util.Message
