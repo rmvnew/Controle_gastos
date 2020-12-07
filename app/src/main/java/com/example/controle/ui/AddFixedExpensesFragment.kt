@@ -12,6 +12,7 @@ import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.FixedExpenses
 import com.example.controle.util.BaseFragment
+import com.example.controle.util.Message
 import kotlinx.android.synthetic.main.fragment_add_fixed_expenses.*
 import kotlinx.coroutines.launch
 
@@ -66,14 +67,15 @@ class AddFixedExpensesFragment : BaseFragment() {
 
                         if(fixedExpenses == null){
                             ProductDatabase(it).getFixedExpenses().addFixedExpenses(fix)
-                            it.toast("Registro salvo com Sucesso!!")
-
+                           // it.toast("Registro salvo com Sucesso!!")
+                            Message.snack(requireView(),"Registro salvo com Sucesso!!")
 
 
                         }else{
                             fix.id = fixedExpenses!!.id
                             ProductDatabase(it).getFixedExpenses().updateFixedExpenses(fix)
-                            it.toast("Registro atualizado")
+//                            it.toast("Registro atualizado")
+                            Message.snack(requireView(),"Registro atualizado")
                             //lançar para lista
                         }
 

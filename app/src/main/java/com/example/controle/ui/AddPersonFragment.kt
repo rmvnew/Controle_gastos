@@ -16,6 +16,7 @@ import com.example.controle.animation.Effects
 import com.example.controle.dao.ProductDatabase
 import com.example.controle.model.Person
 import com.example.controle.util.BaseFragment
+import com.example.controle.util.Message
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_person.*
@@ -114,13 +115,15 @@ class AddPersonFragment : BaseFragment() {
 
                     if(person == null){
                         ProductDatabase(it).getPersonDao().addPerson(per)
-                        it.toast("Usuario salvo")
+                       // it.toast("Usuario salvo")
+                        Message.toast(requireContext(),"Usuario salvo")
                         val action = AddPersonFragmentDirections.actionAddPersonToLista()
                         Navigation.findNavController(view!!).navigate(action)
                     }else{
                         per.id = person!!.id
                         ProductDatabase(it).getPersonDao().updatePerson(per)
-                        it.toast("Usuário atualizado")
+//                        it.toast("Usuário atualizado")
+                        Message.toast(requireContext(),"Usuário atualizado")
                         val action = AddPersonFragmentDirections.actionAddPersonToLista()
                         Navigation.findNavController(view!!).navigate(action)
                     }

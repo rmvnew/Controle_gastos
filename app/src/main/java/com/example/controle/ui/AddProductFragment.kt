@@ -22,6 +22,7 @@ import com.example.controle.model.ListExpenses
 import com.example.controle.model.Product
 import com.example.controle.util.BaseFragment
 import com.example.controle.util.ListUtilsJava
+import com.example.controle.util.Message
 import com.github.rtoshiro.util.format.SimpleMaskFormatter
 import com.github.rtoshiro.util.format.text.MaskTextWatcher
 import kotlinx.android.synthetic.main.fragment_add_product.*
@@ -143,13 +144,15 @@ class AddProductFragment : BaseFragment() {
                             Toast.makeText(context,Html.fromHtml("<font color=#FFD700>Information</font><br>" +
                                     "O item:${prodName.toString()}, foi adicionado a sua lista de preferencias"),Toast.LENGTH_LONG).show()
                         }
-                        it.toast("Produto salvo")
+                      //  it.toast("Produto salvo")
+                        Message.snack(requireView(),"Produto salvo")
 
                     } else {
 
                         prod.id = product!!.id
                         ProductDatabase(it).getProductDao().updateProduct(prod)
-                        it.toast("Produto atualizado")
+//                        it.toast("Produto atualizado")
+                        Message.snack(requireView(),"Produto atualizado")
 
                     }
 

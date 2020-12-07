@@ -40,8 +40,9 @@ class MainFragment : BaseFragment() {
 
         setHasOptionsMenu(true)
 
-        (activity as MainActivity).supportActionBar?.setTitle("Principal")
+        (activity as MainActivity).supportActionBar?.title = "Principal"
         (activity as MainActivity).supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.DKGRAY))
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
